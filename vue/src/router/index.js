@@ -6,6 +6,8 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import GameForm from '../views/GameForm.vue'
+import GameBoard from '../views/GameBoard.vue'
+
 Vue.use(Router)
 
 /**
@@ -60,6 +62,15 @@ const router = new Router({
       meta: {
 
         requiresAuth: true
+      }
+    },
+    {
+      path:"/gameboard",
+      name: "gameboard",
+      component: GameBoard,
+      meta: {
+
+        requiresAuth: false
       }
     }
   ]
