@@ -2,7 +2,7 @@
   <div>
       <h1>Welcome To Stockopoly</h1>
       <h2 class = "description">Description</h2>
-      <p>Players take turns rolling dice and moving around the board buying and selling stock, trying to accrue the most amount of money before the game's end. The game ends when the preselected timer hits zero, or all but one player lose their money. The winner of the game is the player with the most amount of money at the end.</p>
+      <p>Players take turns rolling dice and moving around the board buying and selling stock, trying to accrue the most amount of money before the game's end. The game ends when the preselected timer hits zero, or one player loses all their money. The winner of the game is the player with the most amount of money at the end.</p>
       <ol class = "rules"><h3>Rules</h3>
         <li>You will need at least 2 players to start the game, but can play with up to 6.</li>
         <li>Each player starts with $1,000,000 in cash which is used to buy stocks, pay fines or any other purpose requiring cash.</li>

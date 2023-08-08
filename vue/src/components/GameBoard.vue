@@ -1,324 +1,285 @@
-/* eslint-disable no-mixed-spaces-and-tabs */
 <template>
   <div class="table">
-    <div class="board">
-      <div class="center">
-        <div class="community-chest-deck">
-          <h2 class="label">Community Chest</h2>
-          <div class="deck"></div>
-        </div>
-        <h1 class="title">MONOPOLY</h1>
-        <div class="chance-deck">
-          <h2 class="label">Chance</h2>
-          <div class="deck"></div>
-        </div>
-      </div>
+	<div class="board">
+		<div class="center">
+			<div class="community-chest-deck">
+				<h2 class="label">Community Chest</h2>
+				<div class="deck"></div>
+			</div>
+			<h1 class="title">STOCKOPOLY</h1>
+			<div class="chance-deck">
+				<h2 class="label">Chance</h2>
+				<div class="deck"></div>
+			</div>
+		</div>
 
-      <div class="space corner go">
-        <div class="container">
-          <div class="instructions">Collect $200.00 salary as you pass</div>
-          <div class="go-word">go</div>
-        </div>
-        <div class="arrow fa fa-long-arrow-left"></div>
-      </div>
+		<div class="space corner go">
+			<div class="container">
+				<div class="instructions">Collect $25000.00 salary as you pass</div>
+				<div class="go-word">go</div>
+			</div>
+		</div>
 
-      <div class="row horizontal-row bottom-row">
-        <div class="space property">
-          <div class="container">
-            <div class="color-bar light-blue"></div>
-            <div class="name">Connecticut Avenue</div>
-            <div class="price">PRICE $120</div>
-          </div>
-        </div>
-        <div class="space property">
-          <div class="container">
-            <div class="color-bar light-blue"></div>
-            <div class="name">Vermont Avenue</div>
-            <div class="price">Price $100</div>
-          </div>
-        </div>
-        <div class="space chance">
-          <div class="container">
-            <div class="name">Chance</div>
-            <i class="drawing fa fa-question"></i>
-          </div>
-        </div>
-        <div class="space property">
-          <div class="container">
-            <div class="color-bar light-blue"></div>
-            <div class="name">Oriental Avenue</div>
-            <div class="price">Price $100</div>
-          </div>
-        </div>
-        <div class="space railroad">
-          <div class="container">
-            <div class="name">Reading Railroad</div>
-            <i class="drawing fa fa-subway"></i>
-            <div class="price">Price $200</div>
-          </div>
-        </div>
-        <div class="space fee income-tax">
-          <div class="container">
-            <div class="name">Income Tax</div>
-            <div class="diamond"></div>
-            <div class="instructions">Pay 10%<br />or<br />$200</div>
-          </div>
-        </div>
-        <div class="space property">
-          <div class="container">
-            <div class="color-bar dark-purple"></div>
-            <div class="name">Baltic Avenue</div>
-            <div class="price">Price $50</div>
-          </div>
-        </div>
-        <div class="space community-chest">
-          <div class="container">
-            <div class="name">Community Chest</div>
-            <i class="drawing fa fa-cube"></i>
-            <div class="instructions">Follow instructions on top card</div>
-          </div>
-        </div>
-        <div class="space property">
-          <div class="container">
-            <div class="color-bar dark-purple"></div>
-            <div class="name three-line-name">
-              Mediter-<br />ranean<br />Avenue
-            </div>
-            <div class="price">Price $50</div>
-          </div>
-        </div>
-      </div>
+		<div class="row horizontal-row bottom-row">
+			<div class="space property">
+				<div class="container">
+					<img src="../img/nvidia.png" alt="nvidia" >
+					<div class="name"></div>
+					<div class="price">PRICE $50</div>
+				</div>
+			</div>
+			<div class="space property">
+				<div class="container">
+					<img class ="bigPhoto" src="../img/meta.png" alt="meta" width="50%" >
+					<div class="name"></div>
+					<div class="price">Price $25</div>
+				</div>
+			</div>
+			<div class="space chance">
+				<div class="container">
+					<div class="name">Chance</div>
+				</div>
+			</div>
+			<div class="space property">
+				<div class="container">
+					<img src=../img/gamestop.png alt="gamestop" >
+					<div class="price">Price $100</div>
+				</div>
+			</div>
+			<div class="space railroad">
+				<div class="container">
+					<img src=../img/apple.jpg alt="apple" >
+					<div class="price">Price $200</div>
+				</div>
+			</div>
+			<div class="space fee income-tax">
+				<div class="container">
+					<div class="name">SEC Fine</div>
+					<div class="diamond"></div>
+					<div class="instructions">Pay 10%<br>or<br>$200,000</div>
+				</div>
+			</div>
+			<div class="space property">
+				<div class="container">
+					<img class="photo" src=../img/nike.png alt="nike" >
+					<div class="price">Price $50</div>
+				</div>
+			</div>
+			<div class="space community-chest">
+				<div class="container">
+					<div class="name">Community Chest</div>
+					<div class="instructions">Follow instructions on top card</div>
+				</div>
+			</div>
+			<div class="space property">
+				<div class="container">
+				<img class="bigPhoto" src=../img/tesla.png alt="tesla" >
+					<div class="price">Price $50</div>
+				</div>
+			</div>
+		</div>
 
-      <div class="space corner jail">
-        <div class="just">Just</div>
-        <div class="drawing">
-          <div class="container">
-            <div class="name">In</div>
-            <div class="window">
-              <div class="bar"></div>
-              <div class="bar"></div>
-              <div class="bar"></div>
-              <i class="person fa fa-frown-o"></i>
-            </div>
-            <div class="name">Jail</div>
-          </div>
-        </div>
-        <div class="visiting">Visiting</div>
-      </div>
+		<div class="space corner jail">
+			<div class="just">Just</div>
+			<div class="drawing">
+				<div class="container">
+					<div class="name">In</div>
+					<div class="window">
+						<div class="bar"></div>
+						<div class="bar"></div>
+						<div class="bar"></div>
+					</div>
+					<div class="name">Jail</div>
+				</div>
+			</div>
+			<div class="visiting">Visiting</div>
+		</div>
 
-      <div class="row vertical-row left-row">
-        <div class="space property">
-          <div class="container">
-            <div class="color-bar orange"></div>
-            <div class="name">New York Avenue</div>
-            <div class="price">Price $200</div>
-          </div>
-        </div>
-        <div class="space property">
-          <div class="container">
-            <div class="color-bar orange"></div>
-            <div class="name">Tennessee Avenue</div>
-            <div class="price">Price $180</div>
-          </div>
-        </div>
-        <div class="space community-chest">
-          <div class="container">
-            <div class="name">Community Chest</div>
-            <i class="drawing fa fa-cube"></i>
-            <div class="instructions">Follow instructions on top card</div>
-          </div>
-        </div>
-        <div class="space property">
-          <div class="container">
-            <div class="color-bar orange"></div>
-            <div class="name">St. James Avenue</div>
-            <div class="price">Price $180</div>
-          </div>
-        </div>
-        <div class="space railroad">
-          <div class="container">
-            <div class="name long-name">Pennsylvania Railroad</div>
-            <i class="drawing fa fa-subway"></i>
-            <div class="price">Price $200</div>
-          </div>
-        </div>
-        <div class="space property">
-          <div class="container">
-            <div class="color-bar purple"></div>
-            <div class="name">Virginia Avenue</div>
-            <div class="price">Price $160</div>
-          </div>
-        </div>
-        <div class="space property">
-          <div class="container">
-            <div class="color-bar purple"></div>
-            <div class="name">States Avenue</div>
-            <div class="price">Price $140</div>
-          </div>
-        </div>
-        <div class="space utility electric-company">
-          <div class="container">
-            <div class="name">Electric Company</div>
-            <i class="drawing fa fa-lightbulb-o"></i>
-            <div class="price">Price $150</div>
-          </div>
-        </div>
-        <div class="space property">
-          <div class="container">
-            <div class="color-bar purple"></div>
-            <div class="name">St. Charles Place</div>
-            <div class="price">Price $140</div>
-          </div>
-        </div>
-      </div>
+		<div class="row vertical-row left-row">
+			<div class="space property">
+				<div class="container">
+				<img class="photo" src="../img/att.webp" alt="at&t">
+					<div class="price">Price $200</div>
+				</div>
+			</div>
+			<div class="space property">
+				<div class="container">
+				<img src="../img/americanairlines.png" alt="american airlines">
+					<div class="price">Price $180</div>
+				</div>
+			</div>
+			<div class="space community-chest">
+				<div class="container">
+					<div class="name">Community Chest</div>
+					<div class="instructions">Follow instructions on top card</div>
+				</div>
+			</div>
+			<div class="space property">
+				<div class="container">
+				<img src="../img/boeing.webp" alt="boeing">
+					<div class="price">Price $180</div>
+				</div>
+			</div>
+			<div class="space railroad">
+				<div class="container">
+					<div class="name long-name">Pennsylvania Railroad</div>
+					<div class="price">Price $200</div>
+				</div>
+			</div>
+			<div class="space property">
+				<div class="container">
+				<img src="../img/chipotle.png" alt="chiptole">
+					<div class="price">Price $160</div>
+				</div>
+			</div>
+			<div class="space property">
+				<div class="container">
+					<img src="../img/cigna.png" alt="cigna">
+					<div class="price">Price $140</div>
+				</div>
+			</div>
+			<div class="space utility electric-company">
+				<div class="container">
+					<div class="name">Electric Company</div>
+					<div class="price">Price $150</div>
+				</div>
+			</div>
+			<div class="space property">
+				<div class="container">
+				<img src="../img/dollartree.png" alt="dollar tree">
+					<div class="price">Price $140</div>
+				</div>
+			</div>
+		</div>
 
-      <div class="space corner free-parking">
-        <div class="container">
-          <div class="name">Free</div>
-          <i class="drawing fa fa-car"></i>
-          <div class="name">Parking</div>
-        </div>
-      </div>
+		<div class="space corner free-parking">
+			<div class="container">
+				<div class="name">Holiday</div>
+				<div class="name">Season</div>
+			</div>
+		</div>
 
-      <div class="row horizontal-row top-row">
-        <div class="space property">
-          <div class="container">
-            <div class="color-bar red"></div>
-            <div class="name">Kentucky Avenue</div>
-            <div class="price">Price $220</div>
-          </div>
-        </div>
-        <div class="space chance">
-          <div class="container">
-            <div class="name">Chance</div>
-            <i class="drawing fa fa-question blue"></i>
-          </div>
-        </div>
-        <div class="space property">
-          <div class="container">
-            <div class="color-bar red"></div>
-            <div class="name">Indiana Avenue</div>
-            <div class="price">Price $220</div>
-          </div>
-        </div>
-        <div class="space property">
-          <div class="container">
-            <div class="color-bar red"></div>
-            <div class="name">Illinois Avenue</div>
-            <div class="price">Price $200</div>
-          </div>
-        </div>
-        <div class="space railroad">
-          <div class="container">
-            <div class="name">B & O Railroad</div>
-            <i class="drawing fa fa-subway"></i>
-            <div class="price">Price $200</div>
-          </div>
-        </div>
-        <div class="space property">
-          <div class="container">
-            <div class="color-bar yellow"></div>
-            <div class="name">Atlantic Avenue</div>
-            <div class="price">Price $260</div>
-          </div>
-        </div>
-        <div class="space property">
-          <div class="container">
-            <div class="color-bar yellow"></div>
-            <div class="name">Ventnor Avenue</div>
-            <div class="price">Price $260</div>
-          </div>
-        </div>
-        <div class="space utility waterworks">
-          <div class="container">
-            <div class="name">Waterworks</div>
-            <i class="drawing fa fa-tint"></i>
-            <div class="price">Price $120</div>
-          </div>
-        </div>
-        <div class="space property">
-          <div class="container">
-            <div class="color-bar yellow"></div>
-            <div class="name">Marvin Gardens</div>
-            <div class="price">Price $280</div>
-          </div>
-        </div>
-      </div>
+		<div class="row horizontal-row top-row">
+			<div class="space property">
+				<div class="container">
+				<img src="../img/fedex.png" alt="fedex">
+					<div class="price">Price $220</div>
+				</div>
+			</div>
+			<div class="space chance">
+				<div class="container">
+					<div class="name">Chance</div>
+				</div>
+			</div>
+			<div class="space property">
+				<div class="container">
+					<img src="../img/fidelity.jpg" alt="fidelity">
+					<div class="price">Price $220</div>
+				</div>
+			</div>
+			<div class="space property">
+				<div class="container">
+				<img src="../img/garmin.png" alt="garmin">
+					<div class="price">Price $200</div>
+				</div>
+			</div>
+			<div class="space railroad">
+				<div class="container">
+					<div class="name">B & O Railroad</div>
+					<div class="price">Price $200</div>
+				</div>
+			</div>
+			<div class="space property">
+				<div class="container">
+					<img src="../img/generalmills.jpg" alt="general mills">
+					<div class="price">Price $260</div>
+				</div>
+			</div>
+			<div class="space property">
+				<div class="container">
+					<img class="photo" src="../img/google.png" alt="google">
+					<div class="price">Price $260</div>
+				</div>
+			</div>
+			<div class="space utility waterworks">
+				<div class="container">
+					<div class="name">Waterworks</div>
+					<div class="price">Price $120</div>
+				</div>
+			</div>
+			<div class="space property">
+				<div class="container">
+				<img src="../img/heinz.png" alt="heinz">
+					<div class="price">Price $280</div>
+				</div>
+			</div>
+		</div>
 
-      <div class="space corner go-to-jail">
-        <div class="container">
-          <div class="name">Go To</div>
-          <i class="drawing fa fa-gavel"></i>
-          <div class="name">Jail</div>
-        </div>
-      </div>
+		<div class="space corner go-to-jail">
+			<div class="container">
+				<div class="name">Go To</div>
+				<div class="name">Jail</div>
+			</div>
+		</div>
 
-      <div class="row vertical-row right-row">
-        <div class="space property">
-          <div class="container">
-            <div class="color-bar green"></div>
-            <div class="name">Pacific Avenue</div>
-            <div class="price">Price $300</div>
-          </div>
-        </div>
-        <div class="space property">
-          <div class="container">
-            <div class="color-bar green"></div>
-            <div class="name three-line-name">North Carolina Avenue</div>
-            <div class="price">Price $300</div>
-          </div>
-        </div>
-        <div class="space community-chest">
-          <div class="container">
-            <div class="name">Community Chest</div>
-            <i class="drawing fa fa-cube"></i>
-            <div class="instructions">Follow instructions on top card</div>
-          </div>
-        </div>
-        <div class="space property">
-          <div class="container">
-            <div class="color-bar green"></div>
-            <div class="name long-name">Pennsylvania Avenue</div>
-            <div class="price">Price $320</div>
-          </div>
-        </div>
-        <div class="space railroad">
-          <div class="container">
-            <div class="name">Short Line</div>
-            <i class="drawing fa fa-subway"></i>
-            <div class="price">Price $200</div>
-          </div>
-        </div>
-        <div class="space chance">
-          <div class="container">
-            <div class="name">Chance</div>
-            <i class="drawing fa fa-question"></i>
-          </div>
-        </div>
-        <div class="space property">
-          <div class="container">
-            <div class="color-bar dark-blue"></div>
-            <div class="name">Park Place</div>
-            <div class="price">Price $350</div>
-          </div>
-        </div>
-        <div class="space fee luxury-tax">
-          <div class="container">
-            <div class="name">Luxury Tax</div>
-            <div class="drawing fa fa-diamond"></div>
-            <div class="instructions">Pay $75.00</div>
-          </div>
-        </div>
-        <div class="space property">
-          <div class="container">
-            <div class="color-bar dark-blue"></div>
-            <div class="name">Boardwalk</div>
-            <div class="price">Price $400</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+		<div class="row vertical-row right-row">
+			<div class="space property">
+				<div class="container">
+					<img src="../img/hershey.png" alt="hershey">
+					<div class="price">Price $300</div>
+				</div>
+			</div>
+			<div class="space property">
+				<div class="container">
+				<img class="photo" src="../img/homedepot.png" alt="home depot">
+					<div class="price">Price $300</div>
+				</div>
+			</div>
+			<div class="space community-chest">
+				<div class="container">
+					<div class="name">Community Chest</div>
+					<div class="instructions">Follow instructions on top card</div>
+				</div>
+			</div>
+			<div class="space property">
+				<div class="container">
+				<img src="../img/intel.png" alt="intel">
+					<div class="price">Price $320</div>
+				</div>
+			</div>
+			<div class="space railroad">
+				<div class="container">
+					<div class="name">Short Line</div>
+					<div class="price">Price $200</div>
+				</div>
+			</div>
+			<div class="space chance">
+				<div class="container">
+					<div class="name">Chance</div>
+				</div>
+			</div>
+			<div class="space property">
+				<div class="container">
+				<img src="../img/johndeere.jpg" alt="john deere">
+					<div class="price">Price $350</div>
+				</div>
+			</div>
+			<div class="space fee luxury-tax">
+				<div class="container">
+					<div class="name">Luxury Tax</div>
+					<div class="drawing fa fa-diamond"></div>
+					<div class="instructions">Pay $75.00</div>
+				</div>
+			</div>
+			<div class="space property">
+				<div class="container">
+					<img src="../img/waltdisney.jpg" alt="walt disney">
+					<div class="price">Price $400</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 </template>
 
 <script>
@@ -331,22 +292,13 @@ export default {};
 }
 body {
   margin: 0;
-  background-image: url("https://i.pinimg.com/originals/a4/73/cd/a473cda6c0a58d9b2e2bc2292d16c334.jpg");
-  background-position: center;
-  background-repeat: repeat;
-  background-size: 100px;
-  font-family: "Oswald", sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-weight: 400;
   font-size: 10px;
   color: #080808;
   text-transform: uppercase;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 .dark-purple {
@@ -389,8 +341,8 @@ h6 {
   border: 2px solid #080808;
 }
 .center {
-  grid-column: 0.1818181818;
-  grid-row: 0.1818181818;
+  grid-column: 2 / 11;
+  grid-row: 2 / 11;
   background: #fafaf8;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -399,22 +351,22 @@ h6 {
   align-items: center;
 }
 .title {
-  grid-column: 0.1111111111;
+  grid-column: 1 / 9;
   grid-row: 4;
   font-size: 90px;
   font-weight: 400;
   letter-spacing: 12px;
 }
 .community-chest-deck {
-  grid-column: 0.5;
-  grid-row: 0.5;
+  grid-column: 2 / 4;
+  grid-row: 2 / 4;
   transform: rotate(135deg);
   margin-bottom: 60px;
   margin-right: 60px;
 }
 .chance-deck {
-  grid-column: 0.7142857143;
-  grid-row: 0.7142857143;
+  grid-column: 5 / 7;
+  grid-row: 5 / 7;
   transform: rotate(315deg);
   margin-top: 60px;
   margin-left: 60px;
@@ -447,18 +399,18 @@ h6 {
   left: 50%;
 }
 .bottom-row {
-  grid-column: 0.1818181818;
+  grid-column: 2 / 11;
   grid-row: 11;
 }
 .left-row {
   grid-column: 1;
-  grid-row: 0.1818181818;
+  grid-row: 2 / 11;
 }
 .left-row .container {
   transform: translate(-50%, -50%) rotate(90deg);
 }
 .top-row {
-  grid-column: 0.1818181818;
+  grid-column: 2 / 11;
   grid-row: 1;
 }
 .top-row .container {
@@ -466,7 +418,7 @@ h6 {
 }
 .right-row {
   grid-column: 11;
-  grid-row: 0.1818181818;
+  grid-row: 2 / 11;
 }
 .right-row .container {
   transform: translate(-50%, -50%) rotate(270deg);
@@ -484,8 +436,7 @@ h6 {
   height: 125px;
   width: 80px;
 }
-.space .name,
-.space .instructions {
+.space .name, .space .instructions {
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -531,7 +482,7 @@ h6 {
 }
 .go {
   grid-column: 11;
-  grid-row: 0.9166666667;
+  grid-row: 11 / 12;
   position: relative;
 }
 .go .container {
@@ -554,7 +505,7 @@ h6 {
 }
 .jail {
   grid-column: 1;
-  grid-row: 0.9166666667;
+  grid-row: 11 / 12;
   display: grid;
   grid-template-columns: repeat(10, 12.5px);
   grid-template-rows: repeat(10, 12.5px);
@@ -562,8 +513,8 @@ h6 {
   align-items: center;
 }
 .jail .drawing {
-  grid-column: 0.3636363636;
-  grid-row: 0.125;
+  grid-column: 4 / 11;
+  grid-row: 1 / 8;
   width: 87.5px;
   height: 87.5px;
   background: #fa811d;
@@ -612,7 +563,7 @@ h6 {
 }
 .free-parking {
   grid-column: 1;
-  grid-row: 0.5;
+  grid-row: 1 / 2;
 }
 .free-parking .container {
   justify-content: center;
@@ -629,7 +580,7 @@ h6 {
 }
 .go-to-jail {
   grid-column: 11;
-  grid-row: 1;
+  grid-row: 1 / 1;
 }
 .go-to-jail .container {
   justify-content: center;
@@ -702,4 +653,17 @@ h6 {
   position: relative;
   top: 5px;
 }
+.photo{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+.bigPhoto{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
 </style>
