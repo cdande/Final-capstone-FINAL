@@ -331,10 +331,6 @@ export default {};
 }
 body {
   margin: 0;
-  background-image: url("https://i.pinimg.com/originals/a4/73/cd/a473cda6c0a58d9b2e2bc2292d16c334.jpg");
-  background-position: center;
-  background-repeat: repeat;
-  background-size: 100px;
   font-family: "Oswald", sans-serif;
   font-weight: 400;
   font-size: 10px;
