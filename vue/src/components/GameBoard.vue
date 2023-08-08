@@ -292,7 +292,7 @@ export default {};
 }
 body {
   margin: 0;
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 400;
   font-size: 10px;
   color: #080808;
