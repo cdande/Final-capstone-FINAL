@@ -20,6 +20,7 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
+    users:[],
 
     currentGame: {
       title: "",
@@ -43,9 +44,9 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-
-
-
+    ADD_USER(state,user){
+      state.users.unshift(user);
+    },
 
     CREATE_GAME(state, game){
         state.currentGame.title = game.title;

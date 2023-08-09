@@ -1,11 +1,12 @@
 <template>
   <div class="container">
     <table id="tblUsers">
+      
       <thead>
         <tr>
           <th>&nbsp;</th>
-          <th>Username</th>
-          <th>Select Character</th>
+          <th>Username | </th>
+          <th>Select Character |</th>
         </tr>
       </thead>
       <tbody>
@@ -33,33 +34,11 @@
           </td>
           <td class="">{{ user.username }}</td>
           <td class="">{{ user.selectCharacter }}</td>
-          <td>
-            <button
-              class="btnActivateDeactivate"
-              v-if="user.status === 'Active'"
-              v-on:click="user.status = 'Inactive'"
-            >
-              Deactivate
-            </button>
-            <button
-              class="btnActivateDeactivate"
-              v-if="user.status === 'Inactive'"
-              v-on:click="user.status = 'Active'"
-            >
-              Activate
-            </button>
-          </td>
         </tr>
       </tbody>
     </table>
 
     <div class="all-actions">
-      <button v-bind:disabled="disabled" v-on:click="activateSelectedUsers">
-        Activate Users
-      </button>
-      <button v-bind:disabled="disabled" v-on:click="deactivateAll">
-        Deactivate Users
-      </button>
       <button v-bind:disabled="disabled" v-on:click="deleteSelelected">
         Delete Users
       </button>
@@ -76,17 +55,28 @@
     >
       <div class="field">
         <label for="userName">Username:</label>
-        <input type="text" required name="userName" v-model="newUser.username" />
+        <input
+          type="text"
+          required
+          name="userName"
+          v-model="newUser.username"
+        />
       </div>
       <div class="field">
         <label for="selectCharacter"> Select Character:</label>
         <select required v-model="newUser.selectCharacter">
-          <option value="bull">Bull</option>
-          <option value="bear">Bear</option>
-          <option value="shark">Shark</option>
-          <option value="lion">Lion</option>
-          <option value="eagle">Eagle</option>
-          <option value="tiger">Tiger</option>
+          <option value="bull"
+          v-bind:disabled="isCharacterSelected('bull')">Bull</option>
+          <option value="bear"
+          v-bind:disabled="isCharacterSelected('bear')">Bear</option>
+          <option value="shark"
+          v-bind:disabled="isCharacterSelected('shark')">Shark</option>
+          <option value="lion"
+          v-bind:disabled="isCharacterSelected('lion')">Lion</option>
+          <option value="eagle"
+          v-bind:disabled="isCharacterSelected('eagle')">Eagle</option>
+          <option value="tiger"
+          v-bind:disabled="isCharacterSelected('tiger')">Tiger</option>
         </select>
       </div>
 
@@ -122,10 +112,17 @@ export default {
       return this.nextUserId++;
     },
     addNewUser() {
+      this.$store.commit("ADD_USER", this.newUser);
       this.newUser.id = this.getNextUserId();
       this.users.unshift(this.newUser);
-      this.newUser = {};
+      this.newUser = {
+        id: null,
+        username: "",
+        selectCharacter: "",
+        status: "Active",
+      };
     },
+
     addtoCheckBoxArray(user) {
       if (this.selectedUsers.includes(user)) {
         let index = this.selectedUsers.indexOf(user);
@@ -163,6 +160,9 @@ export default {
         check.checked = false;
       });
       this.selectedUsers = [];
+    },
+    isCharacterSelected(character){
+      return this.users.some(user => user.selectCharacter===character);
     },
   },
 };
