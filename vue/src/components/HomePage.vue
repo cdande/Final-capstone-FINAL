@@ -141,6 +141,8 @@ html{
   width:150px;
   margin:10px;
   display:inline-block;
+  border: 3px solid black;
+  border-radius: 25px;
 }
 #logo{
   display: inline-block;

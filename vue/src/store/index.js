@@ -19,7 +19,12 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+
+    currentGame: {
+      title: "",
+      duration: "",
+    }
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -37,6 +42,14 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+
+
+
+
+    CREATE_GAME(state, game){
+        state.currentGame.title = game.title;
+        state.currentGame.duration = game.maxDuration;
     }
   }
 })
