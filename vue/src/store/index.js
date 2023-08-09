@@ -21,6 +21,11 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     users:[],
+
+    currentGame: {
+      title: "",
+      duration: "",
+    }
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -41,6 +46,11 @@ export default new Vuex.Store({
     },
     ADD_USER(state,user){
       state.users.unshift(user);
+    },
+
+    CREATE_GAME(state, game){
+        state.currentGame.title = game.title;
+        state.currentGame.duration = game.maxDuration;
     }
   }
 })
