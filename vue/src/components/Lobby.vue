@@ -1,11 +1,11 @@
 <template>
   <div class="container">
+    <h1>Welcome To Your Game! Please Select Your Players!</h1>
     <table id="tblUsers">
-      
       <thead>
         <tr>
           <th>&nbsp;</th>
-          <th>Username | </th>
+          <th>Username |</th>
           <th>Select Character |</th>
         </tr>
       </thead>
@@ -47,7 +47,7 @@
     <button href="#" v-on:click.prevent="showForm = !showForm">
       Add New User
     </button>
-
+    <button @click="$router.push('gameboard')" id="button">Start Game!</button>
     <form
       id="frmAddNewUser"
       v-on:submit.prevent="addNewUser"
@@ -161,8 +161,8 @@ export default {
       });
       this.selectedUsers = [];
     },
-    isCharacterSelected(character){
-      return this.users.some(user => user.selectCharacter===character);
+    isCharacterSelected(character) {
+      return this.users.some((user) => user.selectCharacter === character);
     },
   },
 };
@@ -174,6 +174,9 @@ table {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   margin-bottom: 20px;
+}
+h1 {
+  text-align: center;
 }
 th {
   text-transform: uppercase;
