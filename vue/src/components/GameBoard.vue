@@ -7,6 +7,9 @@
 				<div class="deck"></div>
 			</div>
 			<h1 class="title">STOCKOPOLY</h1>
+			<button @click="rollDice" v-bind:disabled = "disabled">Roll Dice</button>
+			<p>{{dice1}}</p>
+			<p>{{dice2}}</p>
 			<div class="chance-deck">
 				<h2 class="label">Chance</h2>
 				<div class="deck"></div>
@@ -17,6 +20,7 @@
 			<div class="container">
 				<div class="instructions">Collect $25000.00 salary as you pass</div>
 				<div class="go-word">go</div>
+				<img class="playerToken" v-if="player && player.position === 0" ref="{{player.img}}"/>
 			</div>
 		</div>
 
@@ -283,7 +287,45 @@
 </template>
 
 <script>
-export default {};
+export default {
+	data(){
+		return{
+			dice1: 0,
+			dice2: 0,
+			player: {
+				img: this.$store.state.users[0].img,
+				position: 0,
+				isRolled: false,
+				money: 1000000,
+				stocksOwned: [],
+			}
+
+		}
+		
+	},
+	methods:{
+		rollDice(){
+			this.dice1 = Math.floor(Math.random()*6)+1;
+			this.dice2 = Math.floor(Math.random()*6)+1;
+			if(this.dice1 === 1 && this.dice2 === 1){
+				this.player.isRolled = false
+			}
+			else{
+				this.player.isRolled = true;
+			}
+		}
+	},
+	computed:{
+		disabled(){
+			if(this.player.isRolled === false){
+				return false;
+			}
+			else{
+				return true;
+			}
+		},
+	}
+};
 </script>
 
 <style>

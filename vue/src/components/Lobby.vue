@@ -65,24 +65,18 @@
       <div class="field">
         <label for="selectCharacter"> Select Character:</label>
         <select required v-model="newUser.selectCharacter">
-          <option value="bull" v-bind:disabled="isCharacterSelected('bull')">
-            Bull
-          </option>
-          <option value="bear" v-bind:disabled="isCharacterSelected('bear')">
-            Bear
-          </option>
-          <option value="shark" v-bind:disabled="isCharacterSelected('shark')">
-            Shark
-          </option>
-          <option value="lion" v-bind:disabled="isCharacterSelected('lion')">
-            Lion
-          </option>
-          <option value="eagle" v-bind:disabled="isCharacterSelected('eagle')">
-            Eagle
-          </option>
-          <option value="tiger" v-bind:disabled="isCharacterSelected('tiger')">
-            Tiger
-          </option>
+          <option value="../img/amazon.png"
+          v-bind:disabled="isCharacterSelected('bull')">Bull</option>
+          <option value="bear"
+          v-bind:disabled="isCharacterSelected('bear')">Bear</option>
+          <option value="shark"
+          v-bind:disabled="isCharacterSelected('shark')">Shark</option>
+          <option value="lion"
+          v-bind:disabled="isCharacterSelected('lion')">Lion</option>
+          <option value="eagle"
+          v-bind:disabled="isCharacterSelected('eagle')">Eagle</option>
+          <option value="tiger"
+          v-bind:disabled="isCharacterSelected('tiger')">Tiger</option>
         </select>
       </div>
 
