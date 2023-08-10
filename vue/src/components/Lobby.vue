@@ -18,22 +18,22 @@
           <td>&nbsp;</td>
         </tr>
         <tr
-          v-for="user in users"
-          v-bind:key="user.id"
-          v-bind:class="{ deactivated: user.status === 'Inactive' }"
+          v-for="player in players"
+          v-bind:key="player.id"
+          v-bind:class="{ deactivated: player.status === 'Inactive' }"
         >
           <td>
             <input
               type="checkbox"
               class="checkbox"
-              v-bind:id="user.id"
-              v-bind:value="user.id"
+              v-bind:id="player.id"
+              v-bind:value="player.id"
               v-bind="selectedUsers"
               v-on:click="addtoCheckBoxArray(user)"
             />
           </td>
-          <td class="">{{ user.username }}</td>
-          <td class="">{{ user.selectCharacter }}</td>
+          <td class="">{{ player.username }}</td>
+          <td class="">{{ player.selectCharacter }}</td>
         </tr>
       </tbody>
     </table>
@@ -50,7 +50,7 @@
     <button @click="$router.push('gameboard')" id="button">Start Game!</button>
     <form
       id="frmAddNewUser"
-      v-on:submit.prevent="addNewUser"
+      v-on:submit.prevent="addPlayer"
       v-show="showForm === true"
     >
       <div class="field">
@@ -59,13 +59,13 @@
           type="text"
           required
           name="userName"
-          v-model="newUser.username"
+          v-model="player.username"
         />
       </div>
       <div class="field">
         <label for="selectCharacter"> Select Character:</label>
-        <select required v-model="newUser.selectCharacter">
-          <option value="../img/amazon.png"
+        <select required v-model="player.selectCharacter">
+          <option value="bull"
           v-bind:disabled="isCharacterSelected('bull')">Bull</option>
           <option value="bear"
           v-bind:disabled="isCharacterSelected('bear')">Bear</option>
@@ -80,7 +80,7 @@
         </select>
       </div>
 
-      <button type="submit" class="btn save" v-on:click="newUser">
+      <button type="submit" class="btn save" v-on:click="player">
         Save Player
       </button>
     </form>
@@ -92,16 +92,16 @@ export default {
   name: "user-list",
   data() {
     return {
-      nextUserId: 7,
+      nextPlayerId: 7,
       showForm: false,
       selectedUsers: [],
-      newUser: {
+      player: {
         id: null,
         username: "",
         selectCharacter: "",
         status: "Active",
       },
-      users: [
+      players: [
         // The person loggin in should be automagically number one in the lobby without us adding
       ],
     };
@@ -109,13 +109,13 @@ export default {
   methods: {
     getNextUserId() {
       // sql api call needed for the id
-      return this.nextUserId++;
+      return this.nextPlayerId++;
     },
-    addNewUser() {
-      this.$store.commit("ADD_USER", this.newUser);
-      this.newUser.id = this.getNextUserId();
-      this.users.unshift(this.newUser);
-      this.newUser = {
+    addPlayer() {
+      this.$store.commit("ADD_PLAYER", this.player);
+      this.player.id = this.getNextUserId();
+      this.players.unshift(this.player);
+      this.player = {
         id: null,
         username: "",
         selectCharacter: "",
@@ -123,17 +123,17 @@ export default {
       };
     },
 
-    addtoCheckBoxArray(user) {
-      if (this.selectedUsers.includes(user)) {
-        let index = this.selectedUsers.indexOf(user);
+    addtoCheckBoxArray(player) {
+      if (this.selectedUsers.includes(player)) {
+        let index = this.selectedUsers.indexOf(player);
         this.selectedUsers.splice(index, 1);
       } else {
-        this.selectedUsers.push(user);
+        this.selectedUsers.push(player);
       }
     },
     activateSelectedUsers() {
-      this.selectedUsers.forEach((user) => {
-        user.status = "Active";
+      this.selectedUsers.forEach((player) => {
+        player.status = "Active";
       });
       let checkbox = document.querySelectorAll(".checkbox");
       checkbox.forEach((check) => {
@@ -142,8 +142,8 @@ export default {
       this.selectedUsers = [];
     },
     deactivateAll() {
-      this.selectedUsers.forEach((user) => {
-        user.status = "Inactive";
+      this.selectedUsers.forEach((player) => {
+        player.status = "Inactive";
       });
       let checkbox = document.querySelectorAll(".checkbox");
       checkbox.forEach((check) => {
@@ -152,8 +152,8 @@ export default {
       this.selectedUsers = [];
     },
     deleteSelelected() {
-      this.selectedUsers.forEach((user) => {
-        this.users.pop(user);
+      this.selectedUsers.forEach((player) => {
+        this.players.pop(player);
       });
       let checkbox = document.querySelectorAll(".checkbox");
       checkbox.forEach((check) => {
@@ -162,7 +162,7 @@ export default {
       this.selectedUsers = [];
     },
     isCharacterSelected(character) {
-      return this.users.some((user) => user.selectCharacter === character);
+      return this.players.some((player) => player.selectCharacter === character);
     },
   },
 };

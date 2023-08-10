@@ -20,8 +20,14 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    users:[],
-
+    player: {
+      id: null,
+      username: "",
+      selectCharacter: "",
+      status: "Active",
+    },
+    players:[],
+    
     currentGame: {
       title: "",
       duration: "",
@@ -44,8 +50,8 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    ADD_USER(state,user){
-      state.users.unshift(user);
+    ADD_PLAYER(state,player){
+      state.players.unshift(player);
     },
 
     CREATE_GAME(state, game){
