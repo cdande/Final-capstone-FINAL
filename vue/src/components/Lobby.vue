@@ -65,7 +65,7 @@
       <div class="field">
         <label for="selectCharacter"> Select Character:</label>
         <select required v-model="newUser.selectCharacter">
-          <option value="bull"
+          <option value="../img/amazon.png"
           v-bind:disabled="isCharacterSelected('bull')">Bull</option>
           <option value="bear"
           v-bind:disabled="isCharacterSelected('bear')">Bear</option>
