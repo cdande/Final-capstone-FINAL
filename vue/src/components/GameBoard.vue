@@ -1,5 +1,7 @@
 <template>
   <div class="table">
+    <h1>{{ currentGame.title }}</h1>
+    <p>Duration: {{ currentGame.duration }}</p>
     <div class="board">
       <div class="center">
         <div class="community-chest-deck">
@@ -39,7 +41,7 @@
             <img
               class="playerToken"
               v-if="player.position === 9"
-               :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -57,7 +59,7 @@
             <img
               class="playerToken"
               v-if="player.position === 8"
-                :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -68,7 +70,7 @@
             <img
               class="playerToken"
               v-if="player.position === 7"
-               :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -80,7 +82,7 @@
             <img
               class="playerToken"
               v-if="player.position === 6"
-                :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -92,7 +94,7 @@
             <img
               class="playerToken"
               v-if="player.position === 5"
-                :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -105,7 +107,7 @@
             <img
               class="playerToken"
               v-if="player.position === 4"
-                :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -129,7 +131,7 @@
             <img
               class="playerToken"
               v-if="player.position === 2"
-               :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -165,7 +167,7 @@
         <img
           class="playerToken"
           v-if="player.position === 10"
-            :src="playerImage"
+          :src="playerImage"
           alt="hello"
         />
       </div>
@@ -178,7 +180,7 @@
             <img
               class="playerToken"
               v-if="player.position === 19"
-                :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -190,7 +192,7 @@
             <img
               class="playerToken"
               v-if="player.position === 18"
-               :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -202,7 +204,7 @@
             <img
               class="playerToken"
               v-if="player.position === 17"
-               :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -214,7 +216,7 @@
             <img
               class="playerToken"
               v-if="player.position === 16"
-                :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -226,7 +228,7 @@
             <img
               class="playerToken"
               v-if="player.position === 15"
-                :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -238,7 +240,7 @@
             <img
               class="playerToken"
               v-if="player.position === 14"
-                :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -250,7 +252,7 @@
             <img
               class="playerToken"
               v-if="player.position === 13"
-                :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -262,7 +264,7 @@
             <img
               class="playerToken"
               v-if="player.position === 12"
-                :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -274,7 +276,7 @@
             <img
               class="playerToken"
               v-if="player.position === 11"
-                :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -288,7 +290,7 @@
           <img
             class="playerToken"
             v-if="player.position === 20"
-              :src="playerImage"
+            :src="playerImage"
             alt="hello"
           />
         </div>
@@ -302,7 +304,7 @@
             <img
               class="playerToken"
               v-if="player.position === 21"
-                :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -325,7 +327,7 @@
             <img
               class="playerToken"
               v-if="player.position === 23"
-               :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -337,7 +339,7 @@
             <img
               class="playerToken"
               v-if="player.position === 24"
-                :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -349,7 +351,7 @@
             <img
               class="playerToken"
               v-if="player.position === 25"
-                :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -361,7 +363,7 @@
             <img
               class="playerToken"
               v-if="player.position === 26"
-                :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -373,7 +375,7 @@
             <img
               class="playerToken"
               v-if="player.position === 27"
-               :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -385,7 +387,7 @@
             <img
               class="playerToken"
               v-if="player.position === 28"
-                :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -397,7 +399,7 @@
             <img
               class="playerToken"
               v-if="player.position === 29"
-               :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -411,7 +413,7 @@
           <img
             class="playerToken"
             v-if="player.position === 30"
-              :src="playerImage"
+            :src="playerImage"
             alt="hello"
           />
         </div>
@@ -425,7 +427,7 @@
             <img
               class="playerToken"
               v-if="player.position === 31"
-               :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -437,7 +439,7 @@
             <img
               class="playerToken"
               v-if="player.position === 32"
-                :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -449,7 +451,7 @@
             <img
               class="playerToken"
               v-if="player.position === 33"
-                :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -461,7 +463,7 @@
             <img
               class="playerToken"
               v-if="player.position === 34"
-                :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -473,7 +475,7 @@
             <img
               class="playerToken"
               v-if="player.position === 35"
-                :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -484,7 +486,7 @@
             <img
               class="playerToken"
               v-if="player.position === 36"
-                :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -496,7 +498,7 @@
             <img
               class="playerToken"
               v-if="player.position === 37"
-                :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -509,7 +511,7 @@
             <img
               class="playerToken"
               v-if="player.position === 38"
-               :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -521,7 +523,7 @@
             <img
               class="playerToken"
               v-if="player.position === 39"
-                :src="playerImage"
+              :src="playerImage"
               alt="hello"
             />
           </div>
@@ -538,7 +540,7 @@ export default {
       dice1: 0,
       dice2: 0,
       player: {
-        img: "bull",
+        img: "Bull",
         //img: this.$store.state.users[0].img,
         position: 0,
         isRolled: false,
@@ -566,7 +568,7 @@ export default {
       //   } else {
       //     this.player.isRolled = true;
       //   }
-    }
+    },
   },
   computed: {
     disabled() {
@@ -576,23 +578,20 @@ export default {
         return true;
       }
     },
-    playerImage() {
-      if (this.player.img === "bull") {
-        return require("../img/apple.jpg");
-      }
-      if (this.player.img === "bull") {
-        return require("../img/apple.jpg");
-      }
-      if (this.player.img === "bull") {
-       return require("../img/apple.jpg");
-      }
-      if (this.player.img === "bull") {
-        return require("../img/apple.jpg");
-      }
-      if (this.player.img === "bull") {
-        return require("../img/apple.jpg");
-      } else {
-        return require("../img/apple.jpg");
+   playerImage() {
+      switch (this.$store.state.players[0].selectCharacter) {
+        case 'bull':
+          return require('../img/bull.jpg');
+        case 'bear':
+          return require('../img/bear.jpg');
+        case 'shark':
+          return require('../img/shark.jpg');
+        case 'lion':
+          return require('../img/lion.jpg');
+        case 'eagle':
+          return require('../img/eagle.jpg');
+        default:
+          return require('../img/tiger.png');
       }
     },
   },
@@ -624,7 +623,6 @@ h6 {
   background: #5e3577;
 }
 .playerToken {
-	
   width: 30px;
   height: 30px;
   z-index: 100;

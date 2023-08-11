@@ -99,7 +99,7 @@ export default {
         id: null,
         username: "",
         selectCharacter: "",
-        status: "Active",
+       
       },
       players: [
         // The person loggin in should be automagically number one in the lobby without us adding
@@ -112,14 +112,14 @@ export default {
       return this.nextPlayerId++;
     },
     addPlayer() {
-      this.$store.commit("ADD_PLAYER", this.player);
       this.player.id = this.getNextUserId();
+      this.$store.commit("ADD_PLAYER", this.player);
       this.players.unshift(this.player);
       this.player = {
         id: null,
         username: "",
         selectCharacter: "",
-        status: "Active",
+        
       };
     },
 
