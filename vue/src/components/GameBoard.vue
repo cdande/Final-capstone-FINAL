@@ -550,7 +550,7 @@ export default {
     };
   },
   created() {
-    this.playerImage();
+    this.player.img=this.playerImage;
   },
   methods: {
     rollDice() {
@@ -579,7 +579,7 @@ export default {
       }
     },
    playerImage() {
-      switch (this.$store.state.players[0].selectCharacter) {
+      switch (this.$store.state.players) {
         case 'bull':
           return require('../img/bull.jpg');
         case 'bear':
