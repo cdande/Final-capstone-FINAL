@@ -12,7 +12,7 @@ Vue.use(Vuex)
 const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
 
-if(currentToken != null) {
+if (currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
 }
 
@@ -20,14 +20,18 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    player: {
-      id: null,
-      username: "",
-      selectCharacter: "",
-      status: "Active",
-    },
-    players:[],
-    
+    // player: {
+    //   id: null,
+    //   username: "",
+    //   selectCharacter: "",
+    //   imageSource: "",
+    //   position: 0,
+    //   //isRolled: false,
+    //   money: 1000000,
+    //   stocksOwned: [],
+    // },
+    players: [],
+
     currentGame: {
       title: "",
       duration: "",
@@ -41,7 +45,7 @@ export default new Vuex.Store({
     },
     SET_USER(state, user) {
       state.user = user;
-      localStorage.setItem('user',JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(user));
     },
     LOGOUT(state) {
       localStorage.removeItem('token');
@@ -50,13 +54,26 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    ADD_PLAYER(state,player){
+    ADD_PLAYER(state, player) {
       state.players.unshift(player);
     },
 
-    CREATE_GAME(state, game){
-        state.currentGame.title = game.title;
-        state.currentGame.duration = game.maxDuration;
-    }
+    CREATE_GAME(state, game) {
+      state.currentGame.title = game.title;
+      state.currentGame.duration = game.maxDuration;
+    },
+    SET_IMAGE(state, player) {
+      state.player = player;
+    },
+    SET_POSITION(state, player) {
+      state.player.position = player.position;
+    },
+    SET_ISROLLED(state, player) {
+      state.player.isRolled = player.isRolled;
+    },
+    SET_TURN(state, player){
+      state.player.isTurn = player.isTurn;
+    },
   }
+
 })

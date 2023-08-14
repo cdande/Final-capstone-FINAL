@@ -23,12 +23,18 @@
         <div class="container">
           <div class="instructions">Collect $25000.00 salary as you pass</div>
           <div class="go-word">go</div>
-          <img
-            class="playerToken"
-            v-if="player.position === 0"
-            :src="playerImage"
-            alt="hello"
-          />
+          <div
+            v-for="player in this.$store.state.players"
+            v-bind:key="player.id"
+          >
+            >
+            <img
+              class="playerToken"
+              v-if="player.position === 0"
+              :src="player.imageSource"
+              alt="hello"
+            />
+          </div>
         </div>
       </div>
 
@@ -520,12 +526,17 @@
           <div class="container">
             <img src="../img/waltdisney.jpg" alt="walt disney" />
             <div class="price">Price $400</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 39"
-              :src="playerImage"
-              alt="hello"
-            />
+            <div
+              v-for="player in this.$store.state.players"
+              v-bind:key="player.id"
+            >
+              <img
+                class="playerToken"
+                v-if="player.position === 39"
+                :src="playerImage"
+                alt="hello"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -537,84 +548,108 @@
 export default {
   data() {
     return {
+      currentPlayer: 0,
       dice1: 0,
       dice2: 0,
-      player: {
-        img: "Bull",
-        //img: this.$store.state.users[0].img,
-        position: 0,
-        isRolled: false,
-        money: 1000000,
-        stocksOwned: [],
-      },
+      // player: {
+      //   img: "Bull",
+      //   //img: this.$store.state.users[0].img,
+      //   position: 0,
+      //   isRolled: false,
+      //   money: 1000000,
+      //   stocksOwned: [],
+      // },
       currentGame: {
-      title: "", // Define the appropriate initial value
-      duration: 0, // Define the appropriate initial value
-    },
+        title: "", // Define the appropriate initial value
+        duration: 0, // Define the appropriate initial value
+      },
     };
   },
   created() {
-<<<<<<< HEAD
-    this.player.img=this.playerImage;
-=======
-    this.player.img = this.playerImage;
->>>>>>> 5489ed0500e9ff303bcf9400e84c8c034ea17cb2
+    this.playerImage();
+    this.$store.state.players[0].isTurn=true;
   },
   methods: {
     rollDice() {
-      this.dice1 = Math.floor(Math.random() * 6) + 1;
-      this.dice2 = Math.floor(Math.random() * 6) + 1;
-      for (let i = 0; i < this.dice1 + this.dice2; i++) {
-        if (this.player.position === 39) {
-          this.player.position = 0;
-        } else {
-          this.player.position++;
+      this.$store.state.players.forEach((player) => {
+        if (player.isTurn) {
+          this.dice1 = Math.floor(Math.random() * 6) + 1;
+          this.dice2 = Math.floor(Math.random() * 6) + 1;
+          for (let i = 0; i < this.dice1 + this.dice2; i++) {
+            if (player.position === 39) {
+              player.position = 0;
+               this.playerPosition(player);
+            } else {
+              player.position++;
+               this.playerPosition(player);
+            }
+          }
+         
+          if (this.dice1 === 1 && this.dice2 === 1) {
+            player.isRolled = false;
+          } else {
+            player.isRolled = true;
+            this.isPlayerRolled(player)
+            player.isTurn=false;
+            this.playerTurn(player);
+          }
         }
-      }
-      //   if (this.dice1 === 1 && this.dice2 === 1) {
-      //     this.player.isRolled = false;
-      //   } else {
-      //     this.player.isRolled = true;
-      //   }
+      });
     },
+    playerImage() {
+      this.$store.state.players.forEach((player) => {
+        console.log(" outside player id =" + player.id);
+        let url = "";
+        let selectedCharacter = player.selectCharacter || "defaultCharacter";
+        console.log(player);
+        switch (selectedCharacter) {
+          case "bull":
+            player.imageSource = require("../img/bull.jpg");
+            this.$store.commit("SET_IMAGE", player);
+            return url;
+          case "bear":
+            player.imageSource = require("../img/bear.jpg");
+            this.$store.commit("SET_IMAGE", player);
+            return url;
+          case "shark":
+            player.imageSource = require("../img/shark.jpg");
+            this.$store.commit("SET_IMAGE", player);
+            return url;
+          case "lion":
+            player.imageSource = require("../img/lion.jpg");
+            this.$store.commit("SET_IMAGE", player);
+            return url;
+          case "eagle":
+            player.imageSource = require("../img/eagle.jpg");
+            this.$store.commit("SET_IMAGE", player);
+            return url;
+          default:
+            player.imageSource = require("../img/tiger.png");
+            this.$store.commit("SET_IMAGE", player);
+            return url;
+        }
+      });
+    },
+    playerPosition(player){
+     this.$store.commit("SET_POSITION", player);
+    },
+    isPlayerRolled(player){
+      this.$store.commit("SET_ISROLLED", player);
+    },
+    playerTurn(player){
+      this.$store.commit("SET_TURN", player);
+    }
   },
   computed: {
     disabled() {
-      if (this.player.isRolled === false) {
+      //Updating current players roll status based on data object 
+      if (this.$store.state.players[this.currentPlayer].isRolled === false) {
         return false;
       } else {
         return true;
       }
     },
-<<<<<<< HEAD
-   playerImage() {
-      switch (this.$store.state.players) {
-=======
-    playerImage() {
-    const players = this.$store.state.players;
-    if (players.length > 0) {
-      const selectedCharacter = players[0]?.selectCharacter || 'defaultCharacter';
-      switch (selectedCharacter) {
->>>>>>> 5489ed0500e9ff303bcf9400e84c8c034ea17cb2
-        case 'bull':
-          return require('../img/bull.jpg');
-        case 'bear':
-          return require('../img/bear.jpg');
-        case 'shark':
-          return require('../img/shark.jpg');
-        case 'lion':
-          return require('../img/lion.jpg');
-        case 'eagle':
-          return require('../img/eagle.jpg');
-        default:
-          return require('../img/tiger.png');
-      }
-    } else {
-      // Handle the case when players array is empty
-      return require('../img/apple.jpg'); // Provide a default image
-    }
   },
-},
 };
 </script>
 

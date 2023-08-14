@@ -55,28 +55,29 @@
     >
       <div class="field">
         <label for="userName">Username:</label>
-        <input
-          type="text"
-          required
-          name="userName"
-          v-model="player.username"
-        />
+        <input type="text" required name="userName" v-model="player.username" />
       </div>
       <div class="field">
         <label for="selectCharacter"> Select Character:</label>
         <select required v-model="player.selectCharacter">
-          <option value="bull"
-          v-bind:disabled="isCharacterSelected('bull')">Bull</option>
-          <option value="bear"
-          v-bind:disabled="isCharacterSelected('bear')">Bear</option>
-          <option value="shark"
-          v-bind:disabled="isCharacterSelected('shark')">Shark</option>
-          <option value="lion"
-          v-bind:disabled="isCharacterSelected('lion')">Lion</option>
-          <option value="eagle"
-          v-bind:disabled="isCharacterSelected('eagle')">Eagle</option>
-          <option value="tiger"
-          v-bind:disabled="isCharacterSelected('tiger')">Tiger</option>
+          <option value="bull" v-bind:disabled="isCharacterSelected('bull')">
+            Bull
+          </option>
+          <option value="bear" v-bind:disabled="isCharacterSelected('bear')">
+            Bear
+          </option>
+          <option value="shark" v-bind:disabled="isCharacterSelected('shark')">
+            Shark
+          </option>
+          <option value="lion" v-bind:disabled="isCharacterSelected('lion')">
+            Lion
+          </option>
+          <option value="eagle" v-bind:disabled="isCharacterSelected('eagle')">
+            Eagle
+          </option>
+          <option value="tiger" v-bind:disabled="isCharacterSelected('tiger')">
+            Tiger
+          </option>
         </select>
       </div>
 
@@ -84,14 +85,18 @@
         Save Player
       </button>
     </form>
+  
   </div>
 </template>
 
 <script>
+
 export default {
+  
   name: "user-list",
   data() {
     return {
+      disabled:false,
       nextPlayerId: 7,
       showForm: false,
       selectedUsers: [],
@@ -99,7 +104,12 @@ export default {
         id: null,
         username: "",
         selectCharacter: "",
-       
+        position: 0,
+        isTurn:false,
+        isRolled: false,
+        money: 1000000,
+        stocksOwned: [],
+        imageSource: ""
       },
       players: [
         // The person loggin in should be automagically number one in the lobby without us adding
@@ -116,9 +126,16 @@ export default {
       this.$store.commit("ADD_PLAYER", this.player);
       this.players.unshift(this.player);
       this.player = {
-        id: null,
+         id: null,
         username: "",
         selectCharacter: "",
+        position: 0,
+        isTurn:false,
+        isRolled: false,
+        money: 1000000,
+        stocksOwned: [],
+        imageSource: "",
+
         
       };
     },
@@ -162,7 +179,9 @@ export default {
       this.selectedUsers = [];
     },
     isCharacterSelected(character) {
-      return this.players.some((player) => player.selectCharacter === character);
+      return this.players.some(
+        (player) => player.selectCharacter === character
+      );
     },
   },
 };
