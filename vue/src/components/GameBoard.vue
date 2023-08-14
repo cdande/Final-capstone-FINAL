@@ -547,10 +547,18 @@ export default {
         money: 1000000,
         stocksOwned: [],
       },
+      currentGame: {
+      title: "", // Define the appropriate initial value
+      duration: 0, // Define the appropriate initial value
+    },
     };
   },
   created() {
+<<<<<<< HEAD
     this.player.img=this.playerImage;
+=======
+    this.player.img = this.playerImage;
+>>>>>>> 5489ed0500e9ff303bcf9400e84c8c034ea17cb2
   },
   methods: {
     rollDice() {
@@ -578,8 +586,16 @@ export default {
         return true;
       }
     },
+<<<<<<< HEAD
    playerImage() {
       switch (this.$store.state.players) {
+=======
+    playerImage() {
+    const players = this.$store.state.players;
+    if (players.length > 0) {
+      const selectedCharacter = players[0]?.selectCharacter || 'defaultCharacter';
+      switch (selectedCharacter) {
+>>>>>>> 5489ed0500e9ff303bcf9400e84c8c034ea17cb2
         case 'bull':
           return require('../img/bull.jpg');
         case 'bear':
@@ -593,8 +609,12 @@ export default {
         default:
           return require('../img/tiger.png');
       }
-    },
+    } else {
+      // Handle the case when players array is empty
+      return require('../img/apple.jpg'); // Provide a default image
+    }
   },
+},
 };
 </script>
 
