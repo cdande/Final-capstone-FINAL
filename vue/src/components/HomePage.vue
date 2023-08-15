@@ -27,10 +27,8 @@
       player lose their money. The winner of the game is the player with the
       most amount of money at the end.
     </p>
-    <section class="stock-market-section">
-      <div class="stock-data">
-        <!-- Display dynamic stock market data and charts here -->
-      </div>
+    <section class="cta-section">
+    <router-link class="cta-button" :to="{ name: 'gamerules' }">Game Rules</router-link>
     </section>
 
     <section class="monopoly-integration-section">
@@ -39,30 +37,18 @@
       </div>
     </section>
 
-    <section class="cta-section">
+  <section class="cta-section">
       <div class="cta-content">
         <h2>Ready to Play?</h2>
         <p>
           Join the fun and experience the ultimate Monopoly Stock Game today!
         </p>
-        <button class="cta-button" @click="signInPage" >Start Playing</button>
       </div>
     </section>
 
     <footer class="footer">
       <div class="footer-content">
         <p>&copy; 2023 STOCKOPOLY Game. All rights reserved.</p>
-        <ul class="social-icons">
-          <li>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-          </li>
-        </ul>
       </div>
     </footer>
   </div>
@@ -80,7 +66,6 @@ export default {
 </script>
 
 <style scoped>
-/* Add global styles here */
 body {
   font-family: "Arial", sans-serif;
   margin: 0;
