@@ -51,10 +51,16 @@
            <player-image :position= "8" />
           </div>
         </div>
-        <div class="space chance">
+        <div class="space property">
           <div class="container">
-            <div class="name">Chance</div>
-            <player-image :position= "7" />
+            <img
+              class="photo"
+              src="../img/walmart.jpg"
+              alt="meta"
+            />
+            <div class="name"></div>
+            <div class="price">Price $25</div>
+           <player-image :position= "7" />
           </div>
         </div>
         <div class="space property">
@@ -88,8 +94,8 @@
         </div>
         <div class="space community-chest">
           <div class="container">
-            <div class="name">Community Chest</div>
-            <div class="instructions">Follow instructions on top card</div>
+            <div class="name">Product Recall</div>
+            <div class="instructions">Lose $15,000</div>
             <player-image :position= "2" />
           </div>
         </div>
@@ -137,8 +143,8 @@
         </div>
         <div class="space community-chest">
           <div class="container">
-            <div class="name">Community Chest</div>
-            <div class="instructions">Follow instructions on top card</div>
+            <div class="name">Employee Strike</div>
+            <div class="instructions">Lose $30,000</div>
             <player-image :position= "17" />
           </div>
         </div>
@@ -149,11 +155,11 @@
            <player-image :position= "16" />
           </div>
         </div>
-        <div class="space railroad">
+        <div class="space property">
           <div class="container">
-            <div class="name long-name">Pennsylvania Railroad</div>
-            <div class="price">Price $200</div>
-            <player-image :position= "15" />
+            <img src="../img/johndeere.jpg" alt="johnedeere" />
+            <div class="price">Price $180</div>
+           <player-image :position= "15" />
           </div>
         </div>
         <div class="space property">
@@ -170,11 +176,11 @@
             <player-image :position= "13" />
           </div>
         </div>
-        <div class="space utility electric-company">
+        <div class="space community-chest">
           <div class="container">
-            <div class="name">Electric Company</div>
-            <div class="price">Price $150</div>
-           <player-image :position= "12" />
+            <div class="name">Lucky Day</div>
+            <div class="instructions">Gain $15,000</div>
+            <player-image :position= "12" />
           </div>
         </div>
         <div class="space property">
@@ -202,9 +208,10 @@
             <player-image :position= "21" />
           </div>
         </div>
-        <div class="space chance">
+         <div class="space community-chest">
           <div class="container">
-            <div class="name">Chance</div>
+            <div class="name">Executive Coruption</div>
+            <div class="instructions">Lose $50,000</div>
             <player-image :position= "22" />
           </div>
         </div>
@@ -222,10 +229,10 @@
             <player-image :position= "24" />
           </div>
         </div>
-        <div class="space railroad">
+          <div class="space property">
           <div class="container">
-            <div class="name">B & O Railroad</div>
-            <div class="price">Price $200</div>
+            <img src="../img/progressive.png" alt="progressive" />
+            <div class="price">Price $260</div>
             <player-image :position= "25" />
           </div>
         </div>
@@ -243,11 +250,11 @@
            <player-image :position= "27" />
           </div>
         </div>
-        <div class="space utility waterworks">
+          <div class="space property">
           <div class="container">
-            <div class="name">Waterworks</div>
-            <div class="price">Price $120</div>
-            <player-image :position= "28" />
+            <img src="../img/nike.png" alt="nike" />
+            <div class="price">Price $260</div>
+            <player-image :position= "26" />
           </div>
         </div>
         <div class="space property">
@@ -284,8 +291,8 @@
         </div>
         <div class="space community-chest">
           <div class="container">
-            <div class="name">Community Chest</div>
-            <div class="instructions">Follow instructions on top card</div>
+            <div class="name">Natural Disaster</div>
+            <div class="instructions">Lose $22,000</div>
             <player-image :position= "33" />
           </div>
         </div>
@@ -296,17 +303,20 @@
             <player-image :position= "34" />
           </div>
         </div>
-        <div class="space railroad">
+        <div class="space property">
           <div class="container">
-            <div class="name">Short Line</div>
-            <div class="price">Price $200</div>
+            <img class="Photo" 
+            src="../img/sherwinwilliams.png" alt="sherwinwilliams" />
+            <div class="price">Price $320</div>
             <player-image :position= "35" />
           </div>
         </div>
-        <div class="space chance">
+        <div class="space property">
           <div class="container">
-            <div class="name">Chance</div>
-            <player-image :position= "36" />
+            <img class="Photo" 
+            src="../img/wellsfargo.png" alt="wellsfargo" />
+            <div class="price">Price $320</div>
+            <player-image :position= "35" />
           </div>
         </div>
         <div class="space property">
@@ -833,6 +843,7 @@ h6 {
   background-color: #f2f2f2;
   display: inline-block;
   margin-bottom: 20px;
+  margin: 10px;
 }
 
 .current-player-header {
@@ -866,6 +877,7 @@ h6 {
   background-color: #ffecec;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
+  margin: 20px;
 }
 .button-container {
   display: flex;
