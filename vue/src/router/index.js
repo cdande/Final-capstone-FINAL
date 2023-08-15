@@ -8,6 +8,7 @@ import store from '../store/index'
 import GameForm from '../views/GameForm.vue'
 import GameBoard from '../views/GameBoard.vue'
 import Lobby from '../views/Lobby.vue'
+import GameRules from '../views/GameRulesView.vue'
 
 Vue.use(Router)
 
@@ -82,6 +83,16 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+    path:"/gamerules",
+    name:"gamerules",
+    component: GameRules,
+    meta:{
+      requiresAuth: false
+    }
+  }
+
+
     
   ]
 })
