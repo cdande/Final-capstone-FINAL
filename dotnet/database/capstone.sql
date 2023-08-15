@@ -10,10 +10,11 @@ END
 
 CREATE DATABASE final_capstone
 GO
+
 --DROP TABLE users
 --DROP TABLE games
 --DROP TABLE players
---DROP TABLE stock
+--DROP TABLE stocks
 --DROP TABLE player_stock
 --DROP TABLE player_game
 
@@ -34,8 +35,9 @@ CREATE TABLE games
 (
         game_id INT IDENTITY (1,1) NOT NULL,
         title VARCHAR(50) NOT NULL,
-        duration INT NOT NULL,
         is_in_progress BIT NOT NULL,
+        max_turns INT NOT NULL,
+        current_turn INT NOT NULL,
         user_id INT NOT NULL,
         CONSTRAINT game_id PRIMARY KEY (game_id),
         FOREIGN KEY (user_id) REFERENCES users (user_id)
@@ -55,9 +57,10 @@ CREATE TABLE players
         
 );
 
-CREATE TABLE stock 
+CREATE TABLE stocks 
 (
         stock_id INT IDENTITY (1,1) NOT NULL,
+        stock_name VARCHAR(20) NOT NULL,
         price INT NOT NULL,
         fee INT NOT NULL,
         CONSTRAINT stock_id PRIMARY KEY (stock_id)
@@ -68,7 +71,7 @@ CREATE TABLE player_stock
         player_id INT NOT NULL,
         stock_id INT NOT NULL,
         FOREIGN KEY (player_id) REFERENCES players (player_id),
-        FOREIGN KEY (stock_id) REFERENCES stock (stock_id)
+        FOREIGN KEY (stock_id) REFERENCES stocks (stock_id)
 );
 CREATE TABLE player_game
 (
