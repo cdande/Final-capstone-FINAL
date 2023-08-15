@@ -4,21 +4,21 @@
     <p>Duration: {{ currentGame.duration }}</p>
     <div class="board">
       <div class="center">
-        <div class="community-chest-deck">
-          <h2 class="label">Community Chest</h2>
-          <div class="deck"></div>
-        </div>
         <h1 class="title">STOCKOPOLY</h1>
-        <h2> Current Player: {{currentPlayer.username}}</h2>
-        <span v-if=error>{{error}}</span>
-        <button @click="rollDice" :disabled="disabled">Roll Dice</button>
-        <button @click="passTurn">Pass Turn</button>
-        <p>{{ dice1 }}</p>
-        <p>{{ dice2 }}</p>
-        <div class="chance-deck">
-          <h2 class="label">Chance</h2>
-          <div class="deck"></div>
+       <div class="current-player-box">
+        <h2 class="current-player-header">Current Player:</h2>
+        <div class="player-info">
+          <img class="player-avatar" :src="currentPlayer.imageSource" alt="Player Avatar" />
+          <span class="username">{{ splitUsername }}</span>
         </div>
+      </div>
+        <p class="error-message" v-if="error">{{ error }}</p>
+       <div class="button-container">
+          <button class="action-button" @click="rollDice" :disabled="disabled">Roll Dice</button>
+          <button class="action-button" @click="passTurn">Pass Turn</button>
+        </div>
+        <DiceComponent :value="dice1" />
+    <DiceComponent :value="dice2" />
       </div>
 
       <div class="space corner go">
@@ -81,7 +81,7 @@
         </div>
         <div class="space property">
           <div class="container">
-            <img class="photo" src=../img/nike.png alt="nike" >
+            <img class="photo" src=../img/tech-elevator.png alt="tech" >
             <div class="price">Price $50</div>
            <player-image :position= "3" />
           </div>
@@ -113,10 +113,11 @@
               <div class="bar"></div>
             </div>
             <div class="name">Jail</div>
+            <player-image :position= "10" />
           </div>
         </div>
         <div class="visiting">Visiting</div>
-        <player-image :position= "10" />
+
       </div>
 
       <div class="row vertical-row left-row">
@@ -318,7 +319,6 @@
         <div class="space fee luxury-tax">
           <div class="container">
             <div class="name">Luxury Tax</div>
-            <div class="drawing fa fa-diamond"></div>
             <div class="instructions">Pay $75.00</div>
             <player-image :position= "38" />
           </div>
@@ -336,10 +336,12 @@
 </template>
 
 <script>
+import DiceComponent from'./DiceComponent.vue'
 import PlayerImage from './PlayerImage.vue'
 export default {
   components: {
-    PlayerImage
+    PlayerImage,
+    DiceComponent
   },
   data() {
     return {
@@ -414,7 +416,7 @@ export default {
             this.$store.commit("SET_IMAGE", player);
             break;
           default:
-            player.imageSource = require("../img/tiger.png");
+            player.imageSource = require("../img/tiger.jpg");
             this.$store.commit("SET_IMAGE", player);
             break;
         }
@@ -458,8 +460,14 @@ export default {
     },
     playerCount(){
       return this.$store.state.players.length;
-    }
+    },
+     splitUsername() {
+      // Adjust the maximum length as needed
+      const maxLength = 12;
+      const username = this.currentPlayer.username;
+      return username.length > maxLength ? `${username.slice(0, maxLength)}...` : username;
   },
+  }
 };
 </script>
 
@@ -540,20 +548,7 @@ h6 {
   font-weight: 400;
   letter-spacing: 12px;
 }
-.community-chest-deck {
-  grid-column: 2 / 4;
-  grid-row: 2 / 4;
-  transform: rotate(135deg);
-  margin-bottom: 60px;
-  margin-right: 60px;
-}
-.chance-deck {
-  grid-column: 5 / 7;
-  grid-row: 5 / 7;
-  transform: rotate(315deg);
-  margin-top: 60px;
-  margin-left: 60px;
-}
+
 .label {
   text-align: center;
   font-weight: 500;
@@ -647,16 +642,11 @@ h6 {
 .railroad .name {
   padding-top: 10px;
 }
-.railroad .drawing {
-  font-size: 60px;
-  color: #080808;
-}
+
 .utility .name {
   padding-top: 10px;
 }
-.utility .drawing {
-  font-size: 70px;
-}
+
 .fee .name {
   padding-top: 10px;
   font-size: 14px;
@@ -756,12 +746,7 @@ h6 {
 .free-parking .name {
   font-size: 16px;
 }
-.free-parking .drawing {
-  font-size: 60px;
-  color: #f50c2b;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
+
 .go-to-jail {
   grid-column: 11;
   grid-row: 1 / 1;
@@ -773,38 +758,22 @@ h6 {
 .go-to-jail .name {
   font-size: 16px;
 }
-.go-to-jail .drawing {
-  font-size: 60px;
-  color: #640303;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
+
 .chance .container {
   justify-content: center;
 }
-.chance .drawing {
-  font-size: 90px;
-  color: #f50c2b;
-}
+
 .chance .blue {
   color: #5a6dba;
 }
 .community-chest .container {
   justify-content: space-around;
 }
-.community-chest .drawing {
-  font-size: 50px;
-  color: #d2eaf5;
-}
+
 .community-chest .instructions {
   font-size: 8px;
 }
-.electric-company .drawing {
-  color: #ffed20;
-}
-.waterworks .drawing {
-  color: #5a6dba;
-}
+
 .income-tax .container {
   justify-content: center;
   align-items: center;
@@ -823,9 +792,7 @@ h6 {
   padding-top: 5px;
   padding-bottom: 5px;
 }
-.luxury-tax .drawing {
-  font-size: 50px;
-}
+
 .luxury-tax .instructions {
   padding-bottom: 5px;
 }
@@ -849,4 +816,82 @@ h6 {
   margin-right: auto;
   width: 50%;
 }
+.player-avatar{
+  height: 50%;
+  width: 50%;
+   border-radius: 50%;
+  margin-left: 10px; 
+  border: 2px solid #3498db; 
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
+}
+.current-player-box {
+   min-width: 300px;
+   min-height: 300px;
+  border: 2px solid #3498db;
+  padding: 50px;
+  border-radius: 10px; 
+  background-color: #f2f2f2;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.current-player-header {
+  margin: 0;
+  font-size: 18px;
+  color: #3498db; /* Text color */
+}
+
+.player-info {
+  display: flex;
+   flex-direction: column;
+  align-items: center;
+}
+
+.username {
+  font-size: 18px;
+  margin-left: 10px;
+}
+.player-avatar-container {
+  flex-shrink: 0; /* Stop picture from shrinking */
+  margin-right: 10px; /* Space between picture and text */
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 15px;
+  margin-top: 15px;
+  text-align: center;
+  border: 2px solid #e74c3c;
+  padding: 10px;
+  background-color: #ffecec;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.action-button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #3498db;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.action-button:hover {
+  background-color: #2980b9;
+}
+
+.action-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
 </style>

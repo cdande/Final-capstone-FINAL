@@ -38,16 +38,16 @@
       </tbody>
     </table>
 
-    <div class="all-actions">
+    <div class="action-buttons">
       <button v-bind:disabled="disabled" v-on:click="deleteSelelected">
         Delete Users
       </button>
     </div>
 
-    <button href="#" v-on:click.prevent="showForm = !showForm">
-      Add New User
+    <button class="action-button" @click="showForm = !showForm">
+      {{ showForm ? "Cancel Adding" : "Add New User" }}
     </button>
-    <button @click="$router.push('gameboard')" id="button">Start Game!</button>
+    <button class="action-button" @click="$router.push('gameboard')" id="button">Start Game!</button>
     <form
       id="frmAddNewUser"
       v-on:submit.prevent="addPlayer"
@@ -186,48 +186,97 @@ export default {
 </script>
 
 <style scoped>
-table {
-  margin-top: 20px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  margin-bottom: 20px;
+.container {
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
+
 h1 {
   text-align: center;
+  margin-bottom: 20px;
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
 th {
   text-transform: uppercase;
+  font-weight: bold;
+  background-color: #f2f2f2;
+  color: #333;
 }
-td {
-  padding: 10px;
-}
+
 tr.deactivated {
   color: red;
 }
-input,
-select {
-  font-size: 16px;
+
+.checkbox {
+  margin: 0;
 }
 
-form {
-  margin: 20px;
-  width: 350px;
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
-.field {
-  padding: 10px 0px;
+
+.action-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
-label {
-  width: 140px;
-  display: inline-block;
+
+.action-button:hover {
+  background-color: #2980b9;
 }
-button {
-  margin-right: 5px;
+
+.form-field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
 }
-.all-actions {
-  margin-bottom: 40px;
+
+.form-field label {
+  width: 150px;
+  margin-right: 10px;
+  font-weight: bold;
 }
+
+input[type="text"], select {
+  padding: 5px;
+  font-size: 16px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
 .btn.save {
-  margin: 20px;
-  float: right;
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
+
+.btn.save:hover {
+  background-color: #27ae60;
+}
+
 </style>
