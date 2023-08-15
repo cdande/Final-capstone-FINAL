@@ -57,22 +57,26 @@ export default new Vuex.Store({
     ADD_PLAYER(state, player) {
       state.players.unshift(player);
     },
-
     CREATE_GAME(state, game) {
       state.currentGame.title = game.title;
       state.currentGame.duration = game.maxDuration;
     },
     SET_IMAGE(state, player) {
-      state.player = player;
+      let index = state.players.findIndex((p) => p.id === player.id)
+      state.players[index] = player;
     },
     SET_POSITION(state, player) {
-      state.player.position = player.position;
+      let index = state.players.findIndex((p) => p.id === player.id)
+      state.players[index].position = player.position;
     },
     SET_ISROLLED(state, player) {
-      state.player.isRolled = player.isRolled;
+      let index = state.players.findIndex((p) => p.id === player.id)
+      state.players[index].isRolled = player.isRolled;
+
     },
     SET_TURN(state, player){
-      state.player.isTurn = player.isTurn;
+      let index = state.players.findIndex((p) => p.id === player.id)
+      state.players[index].isTurn = player.isTurn;
     },
   }
 
