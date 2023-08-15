@@ -11,10 +11,11 @@ END
 CREATE DATABASE final_capstone
 GO
 --DROP TABLE users
---DROP TABLE game
---DROP TABLE [event]
---DROP TABLE [group]
---DROP TABLE member
+--DROP TABLE games
+--DROP TABLE players
+--DROP TABLE stock
+--DROP TABLE player_stock
+--DROP TABLE player_game
 
 USE final_capstone
 GO
@@ -29,14 +30,15 @@ CREATE TABLE users (
 	user_role varchar(50) NOT NULL
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
-CREATE TABLE game
+CREATE TABLE games
 (
         game_id INT IDENTITY (1,1) NOT NULL,
         title VARCHAR(50) NOT NULL,
         duration INT NOT NULL,
-        is_in_progress BOOLEAN NOT NULL,
+        is_in_progress BIT NOT NULL,
         user_id INT NOT NULL,
-        FOREIGN KEY (user_id) REFERENCES (users)
+        CONSTRAINT game_id PRIMARY KEY (game_id),
+        FOREIGN KEY (user_id) REFERENCES users (user_id)
 
 
 );
@@ -46,9 +48,37 @@ CREATE TABLE players
         username VARCHAR(50) NOT NULL,
         selected_character VARCHAR(10) NOT NULL,
         money INT NOT NULL,
-        position INT NOT NULL,
+        player_position INT NOT NULL,
+        is_rolled BIT NOT NULL,
+        is_turn BIT NOT NULL,
+        CONSTRAINT player_id PRIMARY KEY (player_id)
         
+);
+
+CREATE TABLE stock 
+(
+        stock_id INT IDENTITY (1,1) NOT NULL,
+        price INT NOT NULL,
+        fee INT NOT NULL,
+        CONSTRAINT stock_id PRIMARY KEY (stock_id)
+);
+
+CREATE TABLE player_stock
+(
+        player_id INT NOT NULL,
+        stock_id INT NOT NULL,
+        FOREIGN KEY (player_id) REFERENCES players (player_id),
+        FOREIGN KEY (stock_id) REFERENCES stock (stock_id)
+);
+CREATE TABLE player_game
+(
+	player_id INT NOT NULL,
+	game_id INT NOT NULL,
+	FOREIGN KEY (player_id) REFERENCES players (player_id),
+	FOREIGN KEY (game_id) REFERENCES games (game_id)
 )
+
+
 
 --populate default data
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
