@@ -6,7 +6,7 @@
         v-if="player.position === position"
         :src="player.imageSource"
         alt="hello"
-        :style="{left:`${index*8}px`}"
+        :style="{left:`${index*10}px`}"
       />
     </div>
   </div>
@@ -29,8 +29,5 @@ export default {
 position:absolute;
  z-index: 100;
  top: 45px
-}
-.root{
-    
 }
 </style>
