@@ -143,6 +143,7 @@ body {
   padding-block: 20px;
   margin: 1 em aut0;
   line-height: 25px;
+  font-size: 25px;
 }
 #DescTitle {
   padding-bottom: 20px;
