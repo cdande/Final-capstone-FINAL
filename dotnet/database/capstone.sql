@@ -10,9 +10,15 @@ END
 
 CREATE DATABASE final_capstone
 GO
+--DROP TABLE users
+--DROP TABLE game
+--DROP TABLE [event]
+--DROP TABLE [group]
+--DROP TABLE member
 
 USE final_capstone
 GO
+
 
 --create tables
 CREATE TABLE users (
@@ -22,6 +28,26 @@ CREATE TABLE users (
 	salt varchar(200) NOT NULL,
 	user_role varchar(50) NOT NULL
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
+);
+CREATE TABLE game
+(
+        game_id INT IDENTITY (1,1) NOT NULL,
+        title VARCHAR(50) NOT NULL,
+        duration INT NOT NULL,
+        is_in_progress BOOLEAN NOT NULL,
+        user_id INT NOT NULL,
+        FOREIGN KEY (user_id) REFERENCES (users)
+
+
+);
+CREATE TABLE players 
+(
+        player_id INT IDENTITY (1,1) NOT NULL,
+        username VARCHAR(50) NOT NULL,
+        selected_character VARCHAR(10) NOT NULL,
+        money INT NOT NULL,
+        position INT NOT NULL,
+        
 )
 
 --populate default data

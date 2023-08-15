@@ -29,7 +29,7 @@
               v-bind:id="player.id"
               v-bind:value="player.id"
               v-bind="selectedUsers"
-              v-on:click="addtoCheckBoxArray(user)"
+              v-on:click="addtoCheckBoxArray(player)"
             />
           </td>
           <td class="">{{ player.username }}</td>
@@ -135,8 +135,6 @@ export default {
         money: 1000000,
         stocksOwned: [],
         imageSource: "",
-
-        
       };
     },
 

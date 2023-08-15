@@ -9,8 +9,10 @@
           <div class="deck"></div>
         </div>
         <h1 class="title">STOCKOPOLY</h1>
-        <button @click="rollDice" v-bind:disabled="disabled">Roll Dice</button>
-
+        <h2> Current Player: {{currentPlayer.username}}</h2>
+        <span v-if=error>{{error}}</span>
+        <button @click="rollDice" :disabled="disabled">Roll Dice</button>
+        <button @click="passTurn">Pass Turn</button>
         <p>{{ dice1 }}</p>
         <p>{{ dice2 }}</p>
         <div class="chance-deck">
@@ -23,18 +25,7 @@
         <div class="container">
           <div class="instructions">Collect $25000.00 salary as you pass</div>
           <div class="go-word">go</div>
-          <div
-            v-for="player in this.$store.state.players"
-            v-bind:key="player.id"
-          >
-            >
-            <img
-              class="playerToken"
-              v-if="player.position === 0"
-              :src="player.imageSource"
-              alt="hello"
-            />
-          </div>
+         <player-image :position= "0" />
         </div>
       </div>
 
@@ -44,12 +35,7 @@
             <img src="../img/nvidia.png" alt="nvidia" />
             <div class="name"></div>
             <div class="price">PRICE $50</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 9"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "9" />
           </div>
         </div>
         <div class="space property">
@@ -62,47 +48,27 @@
             />
             <div class="name"></div>
             <div class="price">Price $25</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 8"
-              :src="playerImage"
-              alt="hello"
-            />
+           <player-image :position= "8" />
           </div>
         </div>
         <div class="space chance">
           <div class="container">
             <div class="name">Chance</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 7"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "7" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img src=../img/gamestop.png alt="gamestop" >
             <div class="price">Price $100</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 6"
-              :src="playerImage"
-              alt="hello"
-            />
+           <player-image :position= "6" />
           </div>
         </div>
         <div class="space railroad">
           <div class="container">
             <img src=../img/apple.jpg alt="apple" >
             <div class="price">Price $200</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 5"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "5" />
           </div>
         </div>
         <div class="space fee income-tax">
@@ -110,48 +76,28 @@
             <div class="name">SEC Fine</div>
             <div class="diamond"></div>
             <div class="instructions">Pay 10%<br />or<br />$200,000</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 4"
-              :src="playerImage"
-              alt="hello"
-            />
+           <player-image :position= "4" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img class="photo" src=../img/nike.png alt="nike" >
             <div class="price">Price $50</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 3"
-              :src="playerImage"
-              alt="hello"
-            />
+           <player-image :position= "3" />
           </div>
         </div>
         <div class="space community-chest">
           <div class="container">
             <div class="name">Community Chest</div>
             <div class="instructions">Follow instructions on top card</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 2"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "2" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img class="bigPhoto" src=../img/tesla.png alt="tesla" >
             <div class="price">Price $50</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 1"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "1" />
           </div>
         </div>
       </div>
@@ -170,12 +116,7 @@
           </div>
         </div>
         <div class="visiting">Visiting</div>
-        <img
-          class="playerToken"
-          v-if="player.position === 10"
-          :src="playerImage"
-          alt="hello"
-        />
+        <player-image :position= "10" />
       </div>
 
       <div class="row vertical-row left-row">
@@ -183,108 +124,63 @@
           <div class="container">
             <img class="photo" src="../img/att.webp" alt="at&t" />
             <div class="price">Price $200</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 19"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "19" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img src="../img/americanairlines.png" alt="american airlines" />
             <div class="price">Price $180</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 18"
-              :src="playerImage"
-              alt="hello"
-            />
+           <player-image :position= "18" />
           </div>
         </div>
         <div class="space community-chest">
           <div class="container">
             <div class="name">Community Chest</div>
             <div class="instructions">Follow instructions on top card</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 17"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "17" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img src="../img/boeing.webp" alt="boeing" />
             <div class="price">Price $180</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 16"
-              :src="playerImage"
-              alt="hello"
-            />
+           <player-image :position= "16" />
           </div>
         </div>
         <div class="space railroad">
           <div class="container">
             <div class="name long-name">Pennsylvania Railroad</div>
             <div class="price">Price $200</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 15"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "15" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img src="../img/chipotle.png" alt="chiptole" />
             <div class="price">Price $160</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 14"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "14" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img src="../img/cigna.png" alt="cigna" />
             <div class="price">Price $140</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 13"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "13" />
           </div>
         </div>
         <div class="space utility electric-company">
           <div class="container">
             <div class="name">Electric Company</div>
             <div class="price">Price $150</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 12"
-              :src="playerImage"
-              alt="hello"
-            />
+           <player-image :position= "12" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img src="../img/dollartree.png" alt="dollar tree" />
             <div class="price">Price $140</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 11"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "11" />
           </div>
         </div>
       </div>
@@ -293,12 +189,7 @@
         <div class="container">
           <div class="name">Holiday</div>
           <div class="name">Season</div>
-          <img
-            class="playerToken"
-            v-if="player.position === 20"
-            :src="playerImage"
-            alt="hello"
-          />
+         <player-image :position= "20" />
         </div>
       </div>
 
@@ -307,107 +198,62 @@
           <div class="container">
             <img src="../img/fedex.png" alt="fedex" />
             <div class="price">Price $220</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 21"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "21" />
           </div>
         </div>
         <div class="space chance">
           <div class="container">
             <div class="name">Chance</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 22"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "22" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img src="../img/fidelity.jpg" alt="fidelity" />
             <div class="price">Price $220</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 23"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "23" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img src="../img/garmin.png" alt="garmin" />
             <div class="price">Price $200</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 24"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "24" />
           </div>
         </div>
         <div class="space railroad">
           <div class="container">
             <div class="name">B & O Railroad</div>
             <div class="price">Price $200</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 25"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "25" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img src="../img/generalmills.jpg" alt="general mills" />
             <div class="price">Price $260</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 26"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "26" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img class="photo" src="../img/google.png" alt="google" />
             <div class="price">Price $260</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 27"
-              :src="playerImage"
-              alt="hello"
-            />
+           <player-image :position= "27" />
           </div>
         </div>
         <div class="space utility waterworks">
           <div class="container">
             <div class="name">Waterworks</div>
             <div class="price">Price $120</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 28"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "28" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img src="../img/heinz.png" alt="heinz" />
             <div class="price">Price $280</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 29"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "29" />
           </div>
         </div>
       </div>
@@ -416,12 +262,7 @@
         <div class="container">
           <div class="name">Go To</div>
           <div class="name">Jail</div>
-          <img
-            class="playerToken"
-            v-if="player.position === 30"
-            :src="playerImage"
-            alt="hello"
-          />
+         <player-image :position= "30" />
         </div>
       </div>
 
@@ -430,83 +271,48 @@
           <div class="container">
             <img src="../img/hershey.png" alt="hershey" />
             <div class="price">Price $300</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 31"
-              :src="playerImage"
-              alt="hello"
-            />
+           <player-image :position= "31" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img class="photo" src="../img/homedepot.png" alt="home depot" />
             <div class="price">Price $300</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 32"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "32" />
           </div>
         </div>
         <div class="space community-chest">
           <div class="container">
             <div class="name">Community Chest</div>
             <div class="instructions">Follow instructions on top card</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 33"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "33" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img src="../img/intel.png" alt="intel" />
             <div class="price">Price $320</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 34"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "34" />
           </div>
         </div>
         <div class="space railroad">
           <div class="container">
             <div class="name">Short Line</div>
             <div class="price">Price $200</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 35"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "35" />
           </div>
         </div>
         <div class="space chance">
           <div class="container">
             <div class="name">Chance</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 36"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "36" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img src="../img/johndeere.jpg" alt="john deere" />
             <div class="price">Price $350</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 37"
-              :src="playerImage"
-              alt="hello"
-            />
+           <player-image :position= "37" />
           </div>
         </div>
         <div class="space fee luxury-tax">
@@ -514,29 +320,14 @@
             <div class="name">Luxury Tax</div>
             <div class="drawing fa fa-diamond"></div>
             <div class="instructions">Pay $75.00</div>
-            <img
-              class="playerToken"
-              v-if="player.position === 38"
-              :src="playerImage"
-              alt="hello"
-            />
+            <player-image :position= "38" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img src="../img/waltdisney.jpg" alt="walt disney" />
             <div class="price">Price $400</div>
-            <div
-              v-for="player in this.$store.state.players"
-              v-bind:key="player.id"
-            >
-              <img
-                class="playerToken"
-                v-if="player.position === 39"
-                :src="playerImage"
-                alt="hello"
-              />
-            </div>
+           <player-image :position= "39" />
           </div>
         </div>
       </div>
@@ -545,10 +336,15 @@
 </template>
 
 <script>
+import PlayerImage from './PlayerImage.vue'
 export default {
+  components: {
+    PlayerImage
+  },
   data() {
     return {
-      currentPlayer: 0,
+      error: "",
+      currentPlayerIndex: 0,
       dice1: 0,
       dice2: 0,
       // player: {
@@ -567,12 +363,12 @@ export default {
   },
   created() {
     this.playerImage();
-    this.$store.state.players[0].isTurn=true;
+   this.playerTurn({...this.$store.state.players[0], isTurn: true});
   },
   methods: {
     rollDice() {
       this.$store.state.players.forEach((player) => {
-        if (player.isTurn) {
+        if (player.isTurn && !this.isRolled) {
           this.dice1 = Math.floor(Math.random() * 6) + 1;
           this.dice2 = Math.floor(Math.random() * 6) + 1;
           for (let i = 0; i < this.dice1 + this.dice2; i++) {
@@ -584,49 +380,43 @@ export default {
                this.playerPosition(player);
             }
           }
-         
           if (this.dice1 === 1 && this.dice2 === 1) {
             player.isRolled = false;
           } else {
-            player.isRolled = true;
-            this.isPlayerRolled(player)
-            player.isTurn=false;
-            this.playerTurn(player);
+            this.isPlayerRolled({...player, isRolled: true})
+            //this.playerTurn({...player, isTurn: false});
           }
         }
       });
     },
     playerImage() {
       this.$store.state.players.forEach((player) => {
-        console.log(" outside player id =" + player.id);
-        let url = "";
         let selectedCharacter = player.selectCharacter || "defaultCharacter";
-        console.log(player);
         switch (selectedCharacter) {
           case "bull":
             player.imageSource = require("../img/bull.jpg");
             this.$store.commit("SET_IMAGE", player);
-            return url;
+            break;
           case "bear":
             player.imageSource = require("../img/bear.jpg");
             this.$store.commit("SET_IMAGE", player);
-            return url;
+            break;
           case "shark":
             player.imageSource = require("../img/shark.jpg");
             this.$store.commit("SET_IMAGE", player);
-            return url;
+            break;
           case "lion":
             player.imageSource = require("../img/lion.jpg");
             this.$store.commit("SET_IMAGE", player);
-            return url;
+            break;
           case "eagle":
             player.imageSource = require("../img/eagle.jpg");
             this.$store.commit("SET_IMAGE", player);
-            return url;
+            break;
           default:
             player.imageSource = require("../img/tiger.png");
             this.$store.commit("SET_IMAGE", player);
-            return url;
+            break;
         }
       });
     },
@@ -638,17 +428,37 @@ export default {
     },
     playerTurn(player){
       this.$store.commit("SET_TURN", player);
+    },
+    passTurn(){
+      if(this.currentPlayer.isRolled){
+        this.currentPlayer.isTurn = false;
+      if(this.currentPlayerIndex + 1 < this.playerCount){
+        this.currentPlayerIndex++;
+      }
+      else{
+        this.currentPlayerIndex = 0;
+      }
+      this.currentPlayer.isTurn = true;
+      this.error = "";
     }
+    else{
+      this.error = "You need to Roll before you can Pass your turn.";
+    }
+    this.currentPlayer.isRolled = false;
+      }
+      
   },
   computed: {
     disabled() {
       //Updating current players roll status based on data object 
-      if (this.$store.state.players[this.currentPlayer].isRolled === false) {
-        return false;
-      } else {
-        return true;
-      }
+      return this.currentPlayer.isRolled;
     },
+    currentPlayer(){
+      return this.$store.state.players[this.currentPlayerIndex]
+    },
+    playerCount(){
+      return this.$store.state.players.length;
+    }
   },
 };
 </script>
@@ -676,14 +486,6 @@ h6 {
 
 .dark-purple {
   background: #5e3577;
-}
-.playerToken {
-  width: 30px;
-  height: 30px;
-  z-index: 100;
-  position: absolute;
-  border: 2px solid black;
-  border-radius: 5px;
 }
 .light-blue {
   background: #d2eaf5;
