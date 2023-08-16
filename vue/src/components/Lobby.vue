@@ -85,14 +85,17 @@
         Save Player
       </button>
     </form>
-  
+     <GameRules/>
   </div>
 </template>
 
 <script>
 import PlayerService from '../services/PlayerService';
-import GameService from '../services/GameService'
+import GameService from '../services/GameService';
+import GameRules from "./GameRules.vue";
+
 export default {
+  components: {GameRules},
   
   name: "user-list",
   data() {
@@ -165,10 +168,10 @@ export default {
       );
     },
       async BeginGame(){
-      await GameService.CreateGame(this.$store.state.currentGame)
+      await GameService.CreateGame(this.$store.state.currentGame);
       let players = await PlayerService.CreatePlayers(this.players);
       this.$store.commit("ADD_PLAYERS", players);
-      this.$router.push('gameboard')
+      this.$router.push('gameboard');
     },
     ResetPlayer(){
       this.player = {

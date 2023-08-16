@@ -33,7 +33,7 @@ export default {
       Game: {
         title: "",
         MaxTurns: "",
-        CurrentTurn:"",
+        CurrentTurn: 1,
         IsInProgress: true
       },
       isLoading: false, // Initialize loading state
