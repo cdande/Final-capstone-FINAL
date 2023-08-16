@@ -34,7 +34,9 @@ export default new Vuex.Store({
 
     currentGame: {
       title: "",
-      duration: "",
+      MaxTurns: "",
+      CurrentTurn: "",
+      IsInProgress: ""
     }
   },
   mutations: {
@@ -54,12 +56,14 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    ADD_PLAYER(state, player) {
-      state.players.unshift(player);
+    ADD_PLAYERS(state, players) {
+      state.players = players;
     },
     CREATE_GAME(state, game) {
       state.currentGame.title = game.title;
-      state.currentGame.duration = game.maxDuration;
+      state.currentGame.MaxTurns = game.MaxTurns;
+      state.currentGame.CurrentTurn = game.CurrentTurn;
+      state.currentGame.IsInProgress = game.IsInProgress;
     },
     SET_IMAGE(state, player) {
       let index = state.players.findIndex((p) => p.id === player.id)

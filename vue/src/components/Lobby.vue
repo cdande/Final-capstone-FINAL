@@ -47,7 +47,7 @@
     <button class="action-button" @click="showForm = !showForm">
       {{ showForm ? "Cancel Adding" : "Add New User" }}
     </button>
-    <button class="action-button" @click="$router.push('gameboard')" id="button">Start Game!</button>
+    <button class="action-button" @click="BeginGame" id="button">Start Game!</button>
     <form
       id="frmAddNewUser"
       v-on:submit.prevent="addPlayer"
@@ -81,7 +81,7 @@
         </select>
       </div>
 
-      <button type="submit" class="btn save" v-on:click="player">
+      <button type="submit" class="btn save">
         Save Player
       </button>
     </form>
@@ -90,7 +90,9 @@
 </template>
 
 <script>
-import GameRules from "./GameRules.vue"
+import PlayerService from '../services/PlayerService';
+import GameService from '../services/GameService';
+import GameRules from "./GameRules.vue";
 
 export default {
   components: {GameRules},
@@ -99,7 +101,6 @@ export default {
   data() {
     return {
       disabled:false,
-      nextPlayerId: 7,
       showForm: false,
       selectedUsers: [],
       player: {
@@ -119,27 +120,10 @@ export default {
     };
   },
   methods: {
-    getNextUserId() {
-      // sql api call needed for the id
-      return this.nextPlayerId++;
-    },
     addPlayer() {
-      this.player.id = this.getNextUserId();
-      this.$store.commit("ADD_PLAYER", this.player);
       this.players.unshift(this.player);
-      this.player = {
-         id: null,
-        username: "",
-        selectCharacter: "",
-        position: 0,
-        isTurn:false,
-        isRolled: false,
-        money: 1000000,
-        stocksOwned: [],
-        imageSource: "",
-      };
+      this.ResetPlayer();
     },
-
     addtoCheckBoxArray(player) {
       if (this.selectedUsers.includes(player)) {
         let index = this.selectedUsers.indexOf(player);
@@ -183,6 +167,25 @@ export default {
         (player) => player.selectCharacter === character
       );
     },
+      async BeginGame(){
+      await GameService.CreateGame(this.$store.state.currentGame);
+      let players = await PlayerService.CreatePlayers(this.players);
+      this.$store.commit("ADD_PLAYERS", players);
+      this.$router.push('gameboard');
+    },
+    ResetPlayer(){
+      this.player = {
+        id: null,
+        username: "",
+        selectCharacter: "",
+        position: 0,
+        isTurn:false,
+        isRolled: false,
+        money: 1000000,
+        stocksOwned: [],
+        imageSource: "",
+      };
+    }
   },
 };
 </script>
