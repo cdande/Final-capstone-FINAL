@@ -17,9 +17,9 @@
         <h1>Welcome to the Monopoly Stock Game</h1>
         <p>Experience the thrill of the stock market with a Monopoly twist.</p>
         <button class="cta-button" @click="signInPage" >Play Now</button>
+        <!-- <button class="cta-button2" @click="signInPage" :disabled="hasGame" >Continue</button> -->
       </div>
     </section>
-    <h2 class="description" id="DescTitle">Description</h2>
     <p class="description" id="Descdesc">
       Players take turns rolling dice and moving around the board buying and
       selling stock, trying to accrue the most amount of money before the game's
@@ -28,7 +28,7 @@
       most amount of money at the end.
     </p>
     <section class="cta-section">
-    <router-link class="cta-button" :to="{ name: 'gamerules' }">Game Rules</router-link>
+    <button class="cta-button" @click="gameRulesPage" >Game Rules</button>
     </section>
 
   <section class="cta-section">
@@ -54,18 +54,23 @@ export default {
   methods: {
     signInPage(){
       this.$router.push("login")
+    },
+    gameRulesPage(){
+      this.$router.push("gamerules")
     }
   }
 };
 </script>
 
 <style scoped>
+.homepage{
+  background-color: #333;
+}
 body {
   font-family: "Arial", sans-serif;
   margin: 0;
   padding: 0;
 }
-
 
 .header {
   background-color: #333;
@@ -117,56 +122,49 @@ body {
   margin-bottom: 2rem;
 }
 .description {
-  grid-area: description;
+  color: white;
   text-align: center;
   padding-block: 20px;
   margin: 1 em aut0;
   line-height: 25px;
   font-size: 25px;
+  background-color: #333;
 }
 #DescTitle {
   padding-bottom: 20px;
   margin: 1 em auto;
 }
-.cta-button {
-  background-color: #ff9800;
+.cta-button,
+.cta-button2 {
+  margin: 4px;
+  background: linear-gradient(to bottom, #ff9800, #f57c00);
   color: white;
   border: none;
   padding: 1rem 3rem;
   font-size: 1.2rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border-radius: 8px; 
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.cta-button2 {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  border-radius: 8px; 
+  box-shadow: none;
 }
 
 .cta-button:hover {
-  background-color: #f57c00;
-}
-
-.stock-market-section {
-  background-color: #f7f7f7;
-  padding: 5rem 0;
-  text-align: center;
-}
-
-.stock-data {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.monopoly-integration-section {
-  padding: 5rem 0;
-  text-align: center;
-}
-
-.monopoly-content {
-  max-width: 1200px;
-  margin: 0 auto;
+  background: linear-gradient(to bottom, #f57c00, #ff9800);
+  transform: translateY(-2px); 
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 .cta-section {
   background-color: #333;
   color: white;
-  padding: 5rem 0;
+  padding: 3rem 0;
   text-align: center;
 }
 
@@ -174,21 +172,8 @@ body {
   max-width: 800px;
   margin: 0 auto;
 }
-
-.social-icons {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
+.footer-content{
+  color:white;
 }
 
-.social-icons a {
-  color: white;
-  font-size: 1.5rem;
-  transition: color 0.3s ease;
-}
-
-.social-icons a:hover {
-  color: #ff9800;
-}
 </style>

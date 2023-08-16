@@ -9,6 +9,7 @@ import GameForm from '../views/GameForm.vue'
 import GameBoard from '../views/GameBoard.vue'
 import Lobby from '../views/Lobby.vue'
 import GameRules from '../views/GameRulesView.vue'
+import EndScreenView from '../views/EndScreenView.vue'
 
 Vue.use(Router)
 
@@ -87,6 +88,14 @@ const router = new Router({
     path:"/gamerules",
     name:"gamerules",
     component: GameRules,
+    meta:{
+      requiresAuth: false
+    }
+  },
+    {
+    path:"/endscreen",
+    name:"endscreen",
+    component: EndScreenView,
     meta:{
       requiresAuth: false
     }
