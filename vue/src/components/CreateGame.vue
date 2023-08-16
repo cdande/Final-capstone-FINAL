@@ -6,12 +6,12 @@
         <input type="text" v-model="NewGame.title" required />
       </div>
       <div class="form-group" id="duration">
-        <label for="MaxDuration">Max Duration</label>
-        <select v-model="NewGame.maxDuration" required>
-          <option value="15">15 Min</option>
-          <option value="30">30 Min</option>
-          <option value="45">45 Min</option>
-          <option value="60">60 Min</option>
+        <label for="MaxDuration">Max Turns</label>
+        <select v-model="NewGame.MaxTurns" required>
+          <option value="15">1 Turn</option>
+          <option value="30">5 Turn</option>
+          <option value="45">10 Turn</option>
+          <option value="60">15 Turn</option>
         </select>
       </div>
       <div class="buttons">
@@ -30,9 +30,11 @@
 export default {
   data() {
     return {
-      NewGame: {
+      Game: {
         title: "",
-        maxDuration: "",
+        MaxTurns: "",
+        CurrentTurn:"",
+        IsInProgress: true
       },
       isLoading: false, // Initialize loading state
     };
@@ -43,14 +45,14 @@ export default {
       try {
         // Simulate loading with a timeout (2-3 seconds)
         await new Promise((resolve) => setTimeout(resolve, 2000 + Math.random() * 1000));
-        this.$store.commit('CREATE_GAME', this.NewGame);
+        this.$store.commit('CREATE_GAME', this.Game);
         this.$router.push('lobby');
       } finally {
         this.isLoading = false; // Reset loading state
       }
     },
     resetForm() {
-      this.NewGame = {};
+      this.Game = {};
       this.$router.push('/');
     },
   },

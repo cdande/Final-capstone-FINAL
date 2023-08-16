@@ -348,10 +348,11 @@
 <script>
 import DiceComponent from'./DiceComponent.vue'
 import PlayerImage from './PlayerImage.vue'
+import PlayerService from '../services/PlayerService'
 export default {
   components: {
     PlayerImage,
-    DiceComponent
+    DiceComponent,
   },
   data() {
     return {
@@ -444,6 +445,7 @@ export default {
     passTurn(){
       if(this.currentPlayer.isRolled){
         this.currentPlayer.isTurn = false;
+        PlayerService.UpdatePlayer(this.currentPlayer)
       if(this.currentPlayerIndex + 1 < this.playerCount){
         this.currentPlayerIndex++;
       }

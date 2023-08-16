@@ -18,9 +18,9 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
-        public IList<Game> GetGamesByUserId(int id)
+        public List<Game> GetGamesByUserId(int id)
         {
-            IList<Game> games = new List<Game>();
+            List<Game> games = new List<Game>();
 
             string sql = "SELECT * FROM games WHERE user_id = @id";
 
