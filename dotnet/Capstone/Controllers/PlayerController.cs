@@ -43,10 +43,10 @@ namespace Capstone.Controllers
             }
 
         }
-        [HttpGet("players?gameid={gameId}")]
-        public ActionResult<IList<Player>> GetPlayerByGameId(int gameId)
+        [HttpGet()]
+        public ActionResult<IList<Player>> GetPlayerByGameId(int gameId = 0)
         {
-            IList<Player> players=  PlayerDao.GetPlayersByGameId(gameId);
+            IList<Player> players = PlayerDao.GetPlayersByGameId(gameId);
             if (players != null)
             {
                 return Ok(players);

@@ -53,7 +53,7 @@ export default {
   name: "HomePage",
   methods: {
     signInPage(){
-      this.$router.push("login")
+      this.$router.push("create")
     },
     gameRulesPage(){
       this.$router.push("gamerules")

@@ -122,7 +122,7 @@ namespace Capstone.DAO
 
             string sql = "INSERT INTO games (title, is_in_progress, max_turns, current_turn, user_id) " +
                          "OUTPUT INSERTED.game_id " +
-                         "VALUES (@game.Title, @game.IsInProgress, @game.MaxTurns, @game.CurrentTurn, @game.UserId)";
+                         "VALUES (@Title, @IsInProgress, @MaxTurns, @CurrentTurn, @UserId)";
 
             int newGameId = 0;
             try
@@ -132,11 +132,11 @@ namespace Capstone.DAO
                     conn.Open();
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@game.Title", game.Title);
-                    cmd.Parameters.AddWithValue("@game.IsInProgress", game.IsInProgress);
-                    cmd.Parameters.AddWithValue("@game.MaxTurns", game.MaxTurns);
-                    cmd.Parameters.AddWithValue("@game.CurrentTurn", game.CurrentTurn);
-                    cmd.Parameters.AddWithValue("@game.UserId", game.UserId);
+                    cmd.Parameters.AddWithValue("@Title", game.Title);
+                    cmd.Parameters.AddWithValue("@IsInProgress", game.IsInProgress);
+                    cmd.Parameters.AddWithValue("@MaxTurns", game.MaxTurns);
+                    cmd.Parameters.AddWithValue("@CurrentTurn", game.CurrentTurn);
+                    cmd.Parameters.AddWithValue("@UserId", game.UserId);
                     newGameId = Convert.ToInt32(cmd.ExecuteScalar());
 
                 }
@@ -154,7 +154,7 @@ namespace Capstone.DAO
 
             Game game = null;
 
-            string sql = "SELECT * FROM games WHERE user_id= @user_id AND in_progess= 1";
+            string sql = "SELECT * FROM games WHERE user_id= @user_id AND in_progress= 1";
 
             try
             {

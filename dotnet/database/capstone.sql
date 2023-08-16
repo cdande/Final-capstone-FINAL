@@ -48,7 +48,7 @@ CREATE TABLE players
 (
         player_id INT IDENTITY (1,1) NOT NULL,
         username VARCHAR(50) NOT NULL,
-        selected_character VARCHAR(10) NOT NULL,
+        select_character VARCHAR(10) NOT NULL,
         money INT NOT NULL,
         player_position INT NOT NULL,
         is_rolled BIT NOT NULL,

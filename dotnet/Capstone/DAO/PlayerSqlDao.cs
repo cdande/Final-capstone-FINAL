@@ -48,11 +48,11 @@ namespace Capstone.DAO
         }
         public List<Player> CreatePlayers(List<Player> players)
         {
-            List<Player> addedPlayers = null;
+            List<Player> addedPlayers = new List<Player>();
             Player newPlayer = null;
-            string sql = "INSERT INTO players (username, selected_character, money, player_position, is_rolled, is_turn) " +
+            string sql = "INSERT INTO players (username, select_character, money, player_position, is_rolled, is_turn) " +
                 "OUTPUT INSERTED.player_id " +
-                "VALUES (@username, @selected_character, @money, @player_position, @is_rolled, @s_turn)";
+                "VALUES (@username, @select_character, @money, @player_position, @is_rolled, @is_turn)";
 
             try
             {
@@ -68,7 +68,7 @@ namespace Capstone.DAO
 
                         SqlCommand cmd = new SqlCommand(sql, conn);
                         cmd.Parameters.AddWithValue("@username", player.PlayerId);
-                        cmd.Parameters.AddWithValue("@selected_character", player.SelectedCharacter);
+                        cmd.Parameters.AddWithValue("@select_character", player.SelectCharacter);
                         cmd.Parameters.AddWithValue("@money", player.Money);
                         cmd.Parameters.AddWithValue("@player_position", player.Position);
                         cmd.Parameters.AddWithValue("@is_rolled", player.IsRolled);
@@ -123,11 +123,11 @@ namespace Capstone.DAO
         {
             Player updatedPlayer = null;
             string sql = "UPDATE players SET username = @username, " +
-                "selected_character = @selected_character, " +
+                "select_character = @select_character, " +
                 "money = @money, " +
                 "player_position = @position, " +
-                "is_rolled = @is_rolled " +
-                "is_turn = @is_turn " +
+                "is_rolled = @isRolled, " +
+                "is_turn = @isTurn " +
                 "WHERE player_id = @id";
 
             try
@@ -138,11 +138,12 @@ namespace Capstone.DAO
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@username", player.Username);
-                    cmd.Parameters.AddWithValue("@selected_character", player.SelectedCharacter);
+                    cmd.Parameters.AddWithValue("@select_character", player.SelectCharacter);
                     cmd.Parameters.AddWithValue("@money", player.Money);
                     cmd.Parameters.AddWithValue("@position", player.Position);
-                    cmd.Parameters.AddWithValue("@is_rolled", player.IsRolled);
-                    cmd.Parameters.AddWithValue("@is_turn", player.IsTurn);
+                    cmd.Parameters.AddWithValue("@isRolled", player.IsRolled);
+                    cmd.Parameters.AddWithValue("@isTurn", player.IsTurn);
+                    cmd.Parameters.AddWithValue("@id", player.PlayerId);
                   
                     int numberOfRows = cmd.ExecuteNonQuery();
                     if (numberOfRows == 0)
@@ -165,7 +166,7 @@ namespace Capstone.DAO
             Player player = new Player();
             player.PlayerId = Convert.ToInt32(reader["player_id"]);
             player.Username = Convert.ToString(reader["username"]);
-            player.SelectedCharacter = Convert.ToString(reader["selected_character"]);
+            player.SelectCharacter = Convert.ToString(reader["select_character"]);
             player.Money = Convert.ToInt32(reader["money"]);
             player.Position = Convert.ToInt32(reader["player_position"]);
             player.IsRolled = Convert.ToBoolean(reader["is_rolled"]);
