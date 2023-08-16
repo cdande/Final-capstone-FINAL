@@ -85,13 +85,15 @@
         Save Player
       </button>
     </form>
-  
+     <GameRules/>
   </div>
 </template>
 
 <script>
+import GameRules from "./GameRules.vue"
 
 export default {
+  components: {GameRules},
   
   name: "user-list",
   data() {

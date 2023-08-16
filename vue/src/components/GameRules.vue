@@ -27,7 +27,9 @@
         </li>
       </ol>
     </div>
-    <router-link class="cta-button" :to="{ name: 'home' }">Back</router-link>
+    <nav class="nav-padding">
+     <router-link class="nav-link" :to="{ name: 'home' }">Back</router-link>
+    </nav>
   </div>
 </template>
 
@@ -38,9 +40,26 @@ export default {
 </script>
 
 <style scoped>
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  margin: 10px;
+  padding: 5px 10px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-link:hover {
+  background-color:#333;
+  color:white;
+}
 .rules-page {
   padding: 2rem;
   font-size: 18px;
+}
+.nav-padding{
+  margin-top: 20px;
 }
 
 .rules-title {
