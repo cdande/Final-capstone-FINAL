@@ -46,41 +46,48 @@ namespace Capstone.DAO
 
             return players;
         }
-        public Player CreatePlayer(Player player)
+        public List<Player> CreatePlayers(List<Player> players)
         {
-            Player addedPlayer = null;
+            List<Player> addedPlayers = null;
+            Player newPlayer = null;
             string sql = "INSERT INTO players (username, selected_character, money, player_position, is_rolled, is_turn) " +
                 "OUTPUT INSERTED.player_id " +
                 "VALUES (@username, @selected_character, @money, @player_position, @is_rolled, @s_turn)";
 
             try
             {
-                int newPlayerId;
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                foreach (Player player in players)
                 {
-                    conn.Open();
-
-                    SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@username", player.PlayerId);
-                    cmd.Parameters.AddWithValue("@selected_character", player.SelectedCharacter);
-                    cmd.Parameters.AddWithValue("@money", player.Money);
-                    cmd.Parameters.AddWithValue("@player_position", player.Position);
-                    cmd.Parameters.AddWithValue("@is_rolled", player.IsRolled);
-                    cmd.Parameters.AddWithValue("@is_turn", player.IsTurn);
 
 
-                    newPlayerId = Convert.ToInt32(cmd.ExecuteScalar());
 
+                    int newPlayerId;
+                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    {
+                        conn.Open();
+
+                        SqlCommand cmd = new SqlCommand(sql, conn);
+                        cmd.Parameters.AddWithValue("@username", player.PlayerId);
+                        cmd.Parameters.AddWithValue("@selected_character", player.SelectedCharacter);
+                        cmd.Parameters.AddWithValue("@money", player.Money);
+                        cmd.Parameters.AddWithValue("@player_position", player.Position);
+                        cmd.Parameters.AddWithValue("@is_rolled", player.IsRolled);
+                        cmd.Parameters.AddWithValue("@is_turn", player.IsTurn);
+
+
+                        newPlayerId = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    }
+
+                    newPlayer = GetPlayerByPlayerId(newPlayerId);
+                    addedPlayers.Add(newPlayer);
                 }
-
-                addedPlayer = GetPlayerByPlayerId(newPlayerId);
             }
             catch (SqlException ex)
             {
                 throw new DaoException("SQL exception occurred", ex);
             }
-
-            return addedPlayer;
+            return addedPlayers;
         }
        
         public Player GetPlayerByPlayerId(int id)
