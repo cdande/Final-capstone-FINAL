@@ -31,12 +31,6 @@
     <router-link class="cta-button" :to="{ name: 'gamerules' }">Game Rules</router-link>
     </section>
 
-    <section class="monopoly-integration-section">
-      <div class="monopoly-content">
-        <!-- Integrate Monopoly-themed elements here -->
-      </div>
-    </section>
-
   <section class="cta-section">
       <div class="cta-content">
         <h2>Ready to Play?</h2>
