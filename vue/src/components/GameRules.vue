@@ -40,6 +40,9 @@ export default {
 </script>
 
 <style scoped>
+.rules{
+  background-color: #333;
+}
 .nav-link {
   text-decoration: none;
   color: #333;
@@ -65,6 +68,7 @@ export default {
 .rules-title {
   font-size: 36px;
   margin-bottom: 1rem;
+  color:white;
 }
 
 .rule-book {
