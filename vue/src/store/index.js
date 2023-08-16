@@ -33,6 +33,7 @@ export default new Vuex.Store({
     players: [],
 
     currentGame: {
+      //Get game id from database 
       title: "",
       MaxTurns: "",
       CurrentTurn: "",
@@ -65,6 +66,10 @@ export default new Vuex.Store({
       state.currentGame.CurrentTurn = game.CurrentTurn;
       state.currentGame.IsInProgress = game.IsInProgress;
     },
+     UPDATE_GAME(state, game){
+        state.currentGame.CurrentTurn = game.CurrentTurn;
+        state.currentGame.IsInProgress = game.IsInProgress
+     },
     SET_IMAGE(state, player) {
       let index = state.players.findIndex((p) => p.id === player.id)
       state.players[index] = player;
