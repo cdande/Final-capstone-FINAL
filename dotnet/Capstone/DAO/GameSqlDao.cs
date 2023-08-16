@@ -49,7 +49,7 @@ namespace Capstone.DAO
             return games;
         }
 
-        public Game GetGameByGameId (int gameId)
+        public Game GetGameByGameId(int gameId)
         {
             Game game = null;
 
@@ -104,8 +104,8 @@ namespace Capstone.DAO
                     {
                         throw new DaoException("Zero rows affected, expected at least one.");
                     }
-                     }
-                        updatedGame = GetGameByGameId(game.GameId);
+                }
+                updatedGame = GetGameByGameId(game.GameId);
             }
             catch (SqlException ex)
             {
@@ -119,7 +119,7 @@ namespace Capstone.DAO
         {
             Game newGame = null;
 
-            
+
             string sql = "INSERT INTO games (title, is_in_progress, max_turns, current_turn, user_id) " +
                          "OUTPUT INSERTED.game_id " +
                          "VALUES (@game.Title, @game.IsInProgress, @game.MaxTurns, @game.CurrentTurn, @game.UserId)";
@@ -149,6 +149,36 @@ namespace Capstone.DAO
 
             return newGame;
         }
+        public Game GetInProgressGameByUserId(int userId)
+        {
+
+            Game game = null;
+
+            string sql = "SELECT * FROM games WHERE user_id= @user_id AND in_progess= 1";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@user_id", userId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        game = MapRowToGame(reader);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new DaoException("SQL exception occurred", ex);
+            }
+
+            return game;
+        }
         private Game MapRowToGame(SqlDataReader reader)
         {
             Game game = new Game();
@@ -161,3 +191,6 @@ namespace Capstone.DAO
         }
     }
 }
+       
+    
+

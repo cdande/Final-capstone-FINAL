@@ -10,6 +10,7 @@ namespace Capstone.DAO
         public List<Game> GetGamesByUserId(int userId);
         public Game GetGameByGameId(int id);
         public Game UpdateGameByGameId(Game game);
-        public Game CreateGame(Game newGame); 
+        public Game CreateGame(Game newGame);
+        public Game GetInProgressGameByUserId(int userId);
     }
 }

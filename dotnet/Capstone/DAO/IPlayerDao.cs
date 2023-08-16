@@ -7,7 +7,7 @@ namespace Capstone.DAO
     public interface IPlayerDao
     {
         public IList<Player> GetPlayersByGameId(int id);
-        public Player CreatePlayer(Player player);
+        public List<Player> CreatePlayers(List<Player> players);
         public Player UpdatePlayer(Player player);
         public Player GetPlayerByPlayerId(int id);
 
