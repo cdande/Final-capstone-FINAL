@@ -373,7 +373,7 @@ export default {
     };
   },
   created() {
-    this.playerImage();
+   this.playerImage();
    this.playerTurn({...this.$store.state.players[0], isTurn: true});
   },
   methods: {

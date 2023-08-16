@@ -20,16 +20,6 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    // player: {
-    //   id: null,
-    //   username: "",
-    //   selectCharacter: "",
-    //   imageSource: "",
-    //   position: 0,
-    //   //isRolled: false,
-    //   money: 1000000,
-    //   stocksOwned: [],
-    // },
     players: [],
 
     currentGame: {
@@ -37,7 +27,8 @@ export default new Vuex.Store({
       title: "",
       MaxTurns: "",
       CurrentTurn: "",
-      IsInProgress: ""
+      IsInProgress: "",
+      UserId: ""
     }
   },
   mutations: {
@@ -65,6 +56,7 @@ export default new Vuex.Store({
       state.currentGame.MaxTurns = game.MaxTurns;
       state.currentGame.CurrentTurn = game.CurrentTurn;
       state.currentGame.IsInProgress = game.IsInProgress;
+      state.currentGame.UserId = game.UserId
     },
      UPDATE_GAME(state, game){
         state.currentGame.CurrentTurn = game.CurrentTurn;

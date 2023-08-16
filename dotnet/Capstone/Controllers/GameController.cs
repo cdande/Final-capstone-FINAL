@@ -42,8 +42,8 @@ namespace Capstone.Controllers
                     return NotFound();
                 }
             }
-            [HttpGet("?userid={userId}")]
-            public ActionResult<Game> GetInProgress(int userId)
+            [HttpGet()]
+            public ActionResult<Game> GetInProgress(int userId = 0)
             {
                 Game game= gameDao.GetInProgressGameByUserId(userId);
 
