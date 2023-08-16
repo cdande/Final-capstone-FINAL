@@ -7,11 +7,11 @@
       </div>
       <div class="form-group" id="duration">
         <label for="MaxDuration">Max Turns</label>
-        <select v-model="NewGame.MaxTurns" required>
-          <option value="15">1 Turn</option>
-          <option value="30">5 Turn</option>
-          <option value="45">10 Turn</option>
-          <option value="60">15 Turn</option>
+        <select v-model="Game.MaxTurns" required>
+          <option value="1">1 Turn</option>
+          <option value="5">5 Turn</option>
+          <option value="10">10 Turn</option>
+          <option value="15">15 Turn</option>
         </select>
       </div>
       <div class="buttons">

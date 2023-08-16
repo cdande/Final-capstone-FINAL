@@ -1,7 +1,8 @@
 <template>
   <div class="table">
-    <h1>{{ currentGame.title }}</h1>
-    <p>Duration: {{ currentGame.duration }}</p>
+    <h1>{{ this.currentGame.title }}</h1>
+    <p>Max Turns: {{ this.currentGame.MaxTurns }}</p>
+    <p>Current Turn: {{ this.currentGame.CurrentTurn }}</p>
     <div class="board">
       <div class="center">
         <h1 class="title">STOCKOPOLY</h1>
@@ -349,6 +350,7 @@
 import DiceComponent from'./DiceComponent.vue'
 import PlayerImage from './PlayerImage.vue'
 import PlayerService from '../services/PlayerService'
+import GameService from '../services/GameService'
 export default {
   components: {
     PlayerImage,
@@ -368,10 +370,6 @@ export default {
       //   money: 1000000,
       //   stocksOwned: [],
       // },
-      currentGame: {
-        title: "", // Define the appropriate initial value
-        duration: 0, // Define the appropriate initial value
-      },
     };
   },
   created() {
@@ -442,6 +440,9 @@ export default {
     playerTurn(player){
       this.$store.commit("SET_TURN", player);
     },
+    turnCounter(game){
+      this.$store.commit("UPDATE_GAME", game)
+    },
     passTurn(){
       if(this.currentPlayer.isRolled){
         this.currentPlayer.isTurn = false;
@@ -451,6 +452,17 @@ export default {
       }
       else{
         this.currentPlayerIndex = 0;
+        this.$store.state.currentGame.CurrentTurn++;
+        if(this.currentGame.CurrentTurn > this.currentGame.MaxTurn){
+          this.currentGame.IsInProgress = false;
+          this.turnCounter(this.currentGame);
+          GameService.UpdateGame(this.currentGame);
+          this.$router.push('endscreen')
+        }
+        else{
+          this.turnCounter(this.currentGame);
+          GameService.UpdateGame(this.currentGame);
+        }
       }
       this.currentPlayer.isTurn = true;
       this.error = "";
@@ -479,6 +491,9 @@ export default {
       const username = this.currentPlayer.username;
       return username.length > maxLength ? `${username.slice(0, maxLength)}...` : username;
   },
+    currentGame(){
+      return this.$store.state.currentGame;
+    }
   }
 };
 </script>
