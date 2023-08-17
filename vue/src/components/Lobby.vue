@@ -168,7 +168,8 @@ export default {
       );
     },
       async BeginGame(){
-      await GameService.CreateGame(this.$store.state.currentGame);
+      let newGame = await GameService.CreateGame(this.$store.state.currentGame);
+      this.$store.commit("SET_GAME_FROM_DB", newGame.data);
       let currentplayers = await PlayerService.CreatePlayers(this.players);
       this.$store.commit("ADD_PLAYERS", currentplayers.data);
       this.$router.push('gameboard');

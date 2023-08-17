@@ -1,6 +1,8 @@
 <template>
   <div class="button-padding">
      <router-link class="button-link" :to="{ name: 'home' }">Back</router-link>
+     <h1 class = "text"> Congratulations! You have Completed the game. Press "Back" To go to the Home Screen"</h1>
+     <h2 class = "text"> Thank you for playing STOCKOPOLY </h2>
     </div>
 </template>
 
@@ -27,5 +29,8 @@ export default {
 }
 .button-padding{
   margin-top: 20px;
+}
+.text{
+  margin: 10px;
 }
 </style>
