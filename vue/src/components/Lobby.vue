@@ -38,12 +38,6 @@
       </tbody>
     </table>
 
-    <div class="action-buttons">
-      <button v-bind:disabled="disabled" v-on:click="deleteSelelected">
-        Delete Users
-      </button>
-    </div>
-
     <button class="action-button" @click="showForm = !showForm">
       {{ showForm ? "Cancel Adding" : "Add New User" }}
     </button>

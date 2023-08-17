@@ -35,46 +35,46 @@
           <div class="container">
             <img src="../img/nvidia.png" alt="nvidia" />
             <div class="name"></div>
-            <div class="price">PRICE $50</div>
+            <div class="price">PRICE $130,000</div>
             <player-image :position= "9" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img
-              class="bigPhoto"
-              src="../img/meta.png"
-              alt="meta"
+              class="photo"
+              src="../img/applied.jpg"
+              alt="applied"
               width="50%"
             />
             <div class="name"></div>
-            <div class="price">Price $25</div>
+            <div class="price">Price $145,000</div>
            <player-image :position= "8" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img
-              class="photo"
-              src="../img/walmart.jpg"
-              alt="meta"
+              class="bigPhoto"
+              src="../img/nubo.jpeg"
+              alt="nubo"
             />
             <div class="name"></div>
-            <div class="price">Price $25</div>
+            <div class="price">Price $100,000</div>
            <player-image :position= "7" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img src=../img/gamestop.png alt="gamestop" >
-            <div class="price">Price $100</div>
+            <div class="price">Price $110,000</div>
            <player-image :position= "6" />
           </div>
         </div>
         <div class="space railroad">
           <div class="container">
             <img src=../img/apple.jpg alt="apple" >
-            <div class="price">Price $200</div>
+            <div class="price">Price $200,000</div>
             <player-image :position= "5" />
           </div>
         </div>
@@ -89,21 +89,21 @@
         <div class="space property">
           <div class="container">
             <img class="photo" src=../img/tech-elevator.png alt="tech" >
-            <div class="price">Price $50</div>
+            <div class="price">Price $100,000</div>
            <player-image :position= "3" />
           </div>
         </div>
         <div class="space community-chest">
           <div class="container">
             <div class="name">Product Recall</div>
-            <div class="instructions">Lose $15,000</div>
+            <div class="instructions">Lose $50,000</div>
             <player-image :position= "2" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
-            <img class="bigPhoto" src=../img/tesla.png alt="tesla" >
-            <div class="price">Price $50</div>
+            <img class="photo" src=../img/metrohealth.png alt="metrohealth" >
+            <div class="price">Price $135,000</div>
             <player-image :position= "1" />
           </div>
         </div>
@@ -131,14 +131,14 @@
         <div class="space property">
           <div class="container">
             <img class="photo" src="../img/att.webp" alt="at&t" />
-            <div class="price">Price $200</div>
+            <div class="price">Price $80,000</div>
             <player-image :position= "19" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img src="../img/americanairlines.png" alt="american airlines" />
-            <div class="price">Price $180</div>
+            <div class="price">Price $180,000</div>
            <player-image :position= "18" />
           </div>
         </div>
@@ -152,42 +152,42 @@
         <div class="space property">
           <div class="container">
             <img src="../img/boeing.webp" alt="boeing" />
-            <div class="price">Price $180</div>
+            <div class="price">Price $165,000</div>
            <player-image :position= "16" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
-            <img src="../img/johndeere.jpg" alt="johnedeere" />
-            <div class="price">Price $180</div>
+            <img class="photo" src="../img/xngage.png" alt="xngage" />
+            <div class="price">Price $155,000</div>
            <player-image :position= "15" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img src="../img/chipotle.png" alt="chiptole" />
-            <div class="price">Price $160</div>
+            <div class="price">Price $65,000</div>
             <player-image :position= "14" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img src="../img/cigna.png" alt="cigna" />
-            <div class="price">Price $140</div>
+            <div class="price">Price $90,000</div>
             <player-image :position= "13" />
           </div>
         </div>
         <div class="space community-chest">
           <div class="container">
             <div class="name">Lucky Day</div>
-            <div class="instructions">Gain $15,000</div>
+            <div class="instructions">Gain $35,000</div>
             <player-image :position= "12" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img src="../img/dollartree.png" alt="dollar tree" />
-            <div class="price">Price $140</div>
+            <div class="price">Price $140,000</div>
             <player-image :position= "11" />
           </div>
         </div>
@@ -205,7 +205,7 @@
         <div class="space property">
           <div class="container">
             <img src="../img/fedex.png" alt="fedex" />
-            <div class="price">Price $220</div>
+            <div class="price">Price $220,000</div>
             <player-image :position= "21" />
           </div>
         </div>
@@ -219,49 +219,52 @@
         <div class="space property">
           <div class="container">
             <img src="../img/fidelity.jpg" alt="fidelity" />
-            <div class="price">Price $220</div>
+            <div class="price">Price $122,000</div>
             <player-image :position= "23" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img src="../img/garmin.png" alt="garmin" />
-            <div class="price">Price $200</div>
+            <div class="price">Price $65,000</div>
             <player-image :position= "24" />
           </div>
         </div>
           <div class="space property">
           <div class="container">
             <img src="../img/progressive.png" alt="progressive" />
-            <div class="price">Price $260</div>
+            <div class="price">Price $260,000</div>
             <player-image :position= "25" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
-            <img src="../img/generalmills.jpg" alt="general mills" />
-            <div class="price">Price $260</div>
+            <img class="photo" 
+            src="../img/generalmills.jpg" 
+            alt="general mills" />
+            <div class="price">Price $125,000</div>
             <player-image :position= "26" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img class="photo" src="../img/google.png" alt="google" />
-            <div class="price">Price $260</div>
+            <div class="price">Price $255,000</div>
            <player-image :position= "27" />
           </div>
         </div>
           <div class="space property">
           <div class="container">
             <img src="../img/nike.png" alt="nike" />
-            <div class="price">Price $260</div>
+            <div class="price">Price $190,000</div>
             <player-image :position= "26" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
-            <img src="../img/heinz.png" alt="heinz" />
-            <div class="price">Price $280</div>
+            <img
+             src="../img/heinz.png" alt="heinz" />
+            <div class="price">Price $110,000</div>
             <player-image :position= "29" />
           </div>
         </div>
@@ -269,8 +272,8 @@
 
       <div class="space corner go-to-jail">
         <div class="container">
-          <div class="name">Go To</div>
-          <div class="name">Jail</div>
+          <div class="name">It's The</div>
+          <div class="name">Weekend</div>
          <player-image :position= "30" />
         </div>
       </div>
@@ -279,14 +282,14 @@
         <div class="space property">
           <div class="container">
             <img src="../img/hershey.png" alt="hershey" />
-            <div class="price">Price $300</div>
+            <div class="price">Price $128,000</div>
            <player-image :position= "31" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img class="photo" src="../img/homedepot.png" alt="home depot" />
-            <div class="price">Price $300</div>
+            <div class="price">Price $122,000</div>
             <player-image :position= "32" />
           </div>
         </div>
@@ -300,44 +303,44 @@
         <div class="space property">
           <div class="container">
             <img src="../img/intel.png" alt="intel" />
-            <div class="price">Price $320</div>
+            <div class="price">Price $320,000</div>
             <player-image :position= "34" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
-            <img class="Photo" 
+            <img class="photo" 
             src="../img/sherwinwilliams.png" alt="sherwinwilliams" />
-            <div class="price">Price $320</div>
+            <div class="price">Price $125,000</div>
             <player-image :position= "35" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
-            <img class="Photo" 
+            <img class="photo" 
             src="../img/wellsfargo.png" alt="wellsfargo" />
-            <div class="price">Price $320</div>
-            <player-image :position= "35" />
+            <div class="price">Price $345,000</div>
+            <player-image :position= "36" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img src="../img/johndeere.jpg" alt="john deere" />
-            <div class="price">Price $350</div>
+            <div class="price">Price $122,000</div>
            <player-image :position= "37" />
           </div>
         </div>
         <div class="space fee luxury-tax">
           <div class="container">
             <div class="name">Luxury Tax</div>
-            <div class="instructions">Pay $75.00</div>
+            <div class="instructions">Pay $75,000</div>
             <player-image :position= "38" />
           </div>
         </div>
         <div class="space property">
           <div class="container">
             <img src="../img/waltdisney.jpg" alt="walt disney" />
-            <div class="price">Price $400</div>
+            <div class="price">Price $400,000</div>
            <player-image :position= "39" />
           </div>
         </div>
@@ -831,7 +834,7 @@ h6 {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 70%;
+  width: 100%;
 }
 .bigPhoto {
   display: block;
