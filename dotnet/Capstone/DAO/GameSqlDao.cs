@@ -83,8 +83,8 @@ namespace Capstone.DAO
         {
             Game updatedGame = null;
 
-            string sql = "UPDATE games SET title = @game.Title, is_in_progress = @game.IsInProgress, max_turns = @game.MaxTurns," +
-                         "current_turn = @game.CurrentTurn FROM users WHERE game_id = @game.GameId";
+            string sql = "UPDATE games SET title = @Title, is_in_progress = @IsInProgress, max_turns = @MaxTurns," +
+                         "current_turn = @CurrentTurn FROM users WHERE game_id = @GameId";
 
             try
             {
@@ -93,11 +93,11 @@ namespace Capstone.DAO
                     conn.Open();
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@game.Title", game.Title);
-                    cmd.Parameters.AddWithValue("@game.IsInProgress", game.IsInProgress);
-                    cmd.Parameters.AddWithValue("@game.MaxTurns", game.MaxTurns);
-                    cmd.Parameters.AddWithValue("@game.CurrentTurn", game.CurrentTurn);
-                    cmd.Parameters.AddWithValue("@game.GameId", game.GameId);
+                    cmd.Parameters.AddWithValue("@Title", game.Title);
+                    cmd.Parameters.AddWithValue("@IsInProgress", game.IsInProgress);
+                    cmd.Parameters.AddWithValue("@MaxTurns", game.MaxTurns);
+                    cmd.Parameters.AddWithValue("@CurrentTurn", game.CurrentTurn);
+                    cmd.Parameters.AddWithValue("@GameId", game.GameId);
                     int numberOfRows = cmd.ExecuteNonQuery();
 
                     if (numberOfRows == 0)

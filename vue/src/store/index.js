@@ -28,7 +28,8 @@ export default new Vuex.Store({
       MaxTurns: "",
       CurrentTurn: "",
       IsInProgress: "",
-      UserId: ""
+      UserId: "",
+      GameId: 0
     }
   },
   mutations: {
@@ -63,21 +64,31 @@ export default new Vuex.Store({
         state.currentGame.IsInProgress = game.IsInProgress
      },
     SET_IMAGE(state, player) {
-      let index = state.players.findIndex((p) => p.id === player.id)
+      let index = state.players.findIndex((p) => p.playerId === player.playerId)
       state.players[index] = player;
     },
     SET_POSITION(state, player) {
-      let index = state.players.findIndex((p) => p.id === player.id)
-      state.players[index].position = player.position;
+      let index = state.players.findIndex((p) =>  p.playerId === player.playerId);
+      let newPlayers = structuredClone(state.players);
+      newPlayers[index].position = player.position;
+      state.players = newPlayers;
     },
     SET_ISROLLED(state, player) {
-      let index = state.players.findIndex((p) => p.id === player.id)
+      let index = state.players.findIndex((p) =>  p.playerId === player.playerId)
       state.players[index].isRolled = player.isRolled;
 
     },
     SET_TURN(state, player){
-      let index = state.players.findIndex((p) => p.id === player.id)
+      let index = state.players.findIndex((p) =>  p.playerId === player.playerId)
       state.players[index].isTurn = player.isTurn;
+    },
+    SET_GAME_FROM_DB(state, game){
+      state.currentGame.title = game.title;
+      state.currentGame.MaxTurns = game.maxTurns;
+      state.currentGame.CurrentTurn = game.currentTurn;
+      state.currentGame.IsInProgress = game.isInProgress;
+      state.currentGame.UserId = game.UserId;
+      state.currentGame.GameId = game.gameId;
     },
   }
 

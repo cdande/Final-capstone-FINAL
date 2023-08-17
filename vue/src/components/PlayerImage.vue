@@ -1,6 +1,6 @@
 <template>
   <div class ="root">
-    <div v-for="(player, index) in this.$store.state.players" v-bind:key="player.id">
+    <div v-for="(player, index) in this.$store.state.players" v-bind:key="player.playerId">
       <img
         class="playerToken"
         v-if="player.position === position"

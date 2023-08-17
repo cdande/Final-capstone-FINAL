@@ -67,7 +67,7 @@ namespace Capstone.DAO
                         conn.Open();
 
                         SqlCommand cmd = new SqlCommand(sql, conn);
-                        cmd.Parameters.AddWithValue("@username", player.PlayerId);
+                        cmd.Parameters.AddWithValue("@username", player.Username);
                         cmd.Parameters.AddWithValue("@select_character", player.SelectCharacter);
                         cmd.Parameters.AddWithValue("@money", player.Money);
                         cmd.Parameters.AddWithValue("@player_position", player.Position);

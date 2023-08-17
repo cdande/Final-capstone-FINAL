@@ -373,8 +373,9 @@ export default {
     };
   },
   created() {
-   this.playerImage();
    this.playerTurn({...this.$store.state.players[0], isTurn: true});
+   this.playerImage();
+   
   },
   methods: {
     rollDice() {
@@ -405,28 +406,22 @@ export default {
         let selectedCharacter = player.selectCharacter || "defaultCharacter";
         switch (selectedCharacter) {
           case "bull":
-            player.imageSource = require("../img/bull.jpg");
-            this.$store.commit("SET_IMAGE", player);
+            this.$store.commit("SET_IMAGE", {...player, imageSource : require("../img/bull.jpg")});
             break;
           case "bear":
-            player.imageSource = require("../img/bear.jpg");
-            this.$store.commit("SET_IMAGE", player);
+            this.$store.commit("SET_IMAGE", {...player, imageSource : require("../img/bear.jpg")});
             break;
           case "shark":
-            player.imageSource = require("../img/shark.jpg");
-            this.$store.commit("SET_IMAGE", player);
+            this.$store.commit("SET_IMAGE", {...player, imageSource : require("../img/shark.jpg")});
             break;
           case "lion":
-            player.imageSource = require("../img/lion.jpg");
-            this.$store.commit("SET_IMAGE", player);
+            this.$store.commit("SET_IMAGE", {...player, imageSource : require("../img/lion.jpg")});
             break;
           case "eagle":
-            player.imageSource = require("../img/eagle.jpg");
-            this.$store.commit("SET_IMAGE", player);
+            this.$store.commit("SET_IMAGE", {...player, imageSource : require("../img/eagle.jpg")});
             break;
           default:
-            player.imageSource = require("../img/tiger.jpg");
-            this.$store.commit("SET_IMAGE", player);
+            this.$store.commit("SET_IMAGE", {...player, imageSource : require("../img/tiger.jpg")});
             break;
         }
       });
@@ -453,7 +448,8 @@ export default {
       else{
         this.currentPlayerIndex = 0;
         this.$store.state.currentGame.CurrentTurn++;
-        if(this.currentGame.CurrentTurn > this.currentGame.MaxTurn){
+        console.log(this.currentGame.CurrentTurn, this.currentGame.MaxTurns)
+        if(this.currentGame.CurrentTurn > this.currentGame.MaxTurns){
           this.currentGame.IsInProgress = false;
           this.turnCounter(this.currentGame);
           GameService.UpdateGame(this.currentGame);

@@ -1,6 +1,6 @@
 <template>
   <div class="dice">
-    <img :src="getImagePath()" alt="Dice" />
+    <img :src="getImagePath" v-if="getImagePath" alt="Dice" />
   </div>
 </template>
 
@@ -12,8 +12,12 @@ export default {
       required: true,
     },
   },
-  methods: {
+  computed: {
     getImagePath() {
+      console.log(this.value);
+      if(this.value <= 0 || this.value > 6){
+        return false;
+      }
       const imageMap = {
         1: "dice-1.svg",
         2: "dice-2.svg",
@@ -22,7 +26,8 @@ export default {
         5: "dice-5.svg",
         6: "dice-6.svg",
       };
-      return require(`@/img/${imageMap[this.value]}`);
+      
+      return require(`../img/${imageMap[this.value]}`);
     },
   },
 };

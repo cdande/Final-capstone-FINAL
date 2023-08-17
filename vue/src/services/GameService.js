@@ -5,7 +5,7 @@ export default{
         return axios.post('/game', game)
     },
     UpdateGame(game){
-        return axios.put(`/game/${game.id}`)
+        return axios.put(`/game/${game.GameId}`, game)
     },
     //We can filter out the proper game with SQL
     GetInProgressGameByUserId(userId){
