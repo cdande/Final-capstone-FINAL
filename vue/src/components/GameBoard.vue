@@ -11,6 +11,12 @@
         <div class="player-info">
           <img class="player-avatar" :src="currentPlayer.imageSource" alt="Player Avatar" />
           <span class="username">{{ splitUsername }}</span>
+<p class="money">
+  Money: <span class="money-value">${{ currentPlayer.money }}</span>
+</p>
+<p class="money">
+  Stock Value: <span class="stock-value">${{ currentPlayer.stockValue }}</span>
+</p>
         </div>
       </div>
         <p class="error-message" v-if="error">{{ error }}</p>
@@ -37,6 +43,9 @@
             <div class="name"></div>
             <div class="price">PRICE $130,000</div>
             <player-image :position= "9" />
+             <button class="buy-button" @click="buyProperty(130000)" v-if="showBuyButtonForNvidia">
+      Buy Stock
+    </button>
           </div>
         </div>
         <div class="space property">
@@ -50,6 +59,9 @@
             <div class="name"></div>
             <div class="price">Price $145,000</div>
            <player-image :position= "8" />
+            <button class="buy-button" @click="buyProperty(145000)" v-if="showBuyButtonForApplied">
+      Buy Stock
+    </button>
           </div>
         </div>
         <div class="space property">
@@ -62,6 +74,9 @@
             <div class="name"></div>
             <div class="price">Price $100,000</div>
            <player-image :position= "7" />
+            <button class="buy-button" @click="buyProperty(100000)" v-if="showBuyButtonForNubo">
+      Buy Stock
+    </button>
           </div>
         </div>
         <div class="space property">
@@ -69,6 +84,9 @@
             <img src=../img/gamestop.png alt="gamestop" >
             <div class="price">Price $110,000</div>
            <player-image :position= "6" />
+            <button class="buy-button" @click="buyProperty(110000)" v-if="showBuyButtonForGamestop">
+      Buy Stock
+    </button>
           </div>
         </div>
         <div class="space railroad">
@@ -76,6 +94,9 @@
             <img src=../img/apple.jpg alt="apple" >
             <div class="price">Price $200,000</div>
             <player-image :position= "5" />
+             <button class="buy-button" @click="buyProperty(200000)" v-if="showBuyButtonForApple">
+      Buy Stock
+    </button>
           </div>
         </div>
         <div class="space fee income-tax">
@@ -91,6 +112,9 @@
             <img class="photo" src=../img/tech-elevator.png alt="tech" >
             <div class="price">Price $100,000</div>
            <player-image :position= "3" />
+            <button class="buy-button" @click="buyProperty(100000)" v-if="showBuyButtonForTech">
+      Buy Stock
+    </button>
           </div>
         </div>
         <div class="space community-chest">
@@ -105,6 +129,9 @@
             <img class="photo" src=../img/metrohealth.png alt="metrohealth" >
             <div class="price">Price $135,000</div>
             <player-image :position= "1" />
+             <button class="buy-button" @click="buyProperty(135000)" v-if="showBuyButtonForMetro">
+      Buy Stock
+    </button>
           </div>
         </div>
       </div>
@@ -133,6 +160,9 @@
             <img class="photo" src="../img/att.webp" alt="at&t" />
             <div class="price">Price $80,000</div>
             <player-image :position= "19" />
+             <button class="buy-button" @click="buyProperty(80000)" v-if="showBuyButtonForATT">
+      Buy Stock
+    </button>
           </div>
         </div>
         <div class="space property">
@@ -140,6 +170,9 @@
             <img src="../img/americanairlines.png" alt="american airlines" />
             <div class="price">Price $180,000</div>
            <player-image :position= "18" />
+            <button class="buy-button" @click="buyProperty(180000)" v-if="showBuyButtonForAA">
+      Buy Stock
+    </button>
           </div>
         </div>
         <div class="space community-chest">
@@ -154,6 +187,9 @@
             <img src="../img/boeing.webp" alt="boeing" />
             <div class="price">Price $165,000</div>
            <player-image :position= "16" />
+            <button class="buy-button" @click="buyProperty(165000)" v-if="showBuyButtonForBoeing">
+      Buy Stock
+    </button>
           </div>
         </div>
         <div class="space property">
@@ -161,6 +197,9 @@
             <img class="photo" src="../img/xngage.png" alt="xngage" />
             <div class="price">Price $155,000</div>
            <player-image :position= "15" />
+            <button class="buy-button" @click="buyProperty(155000)" v-if="showBuyButtonForXngage">
+      Buy Stock
+    </button>
           </div>
         </div>
         <div class="space property">
@@ -168,6 +207,9 @@
             <img src="../img/chipotle.png" alt="chiptole" />
             <div class="price">Price $65,000</div>
             <player-image :position= "14" />
+             <button class="buy-button" @click="buyProperty(65000)" v-if="showBuyButtonForChipotle">
+      Buy Stock
+    </button>
           </div>
         </div>
         <div class="space property">
@@ -175,6 +217,9 @@
             <img src="../img/cigna.png" alt="cigna" />
             <div class="price">Price $90,000</div>
             <player-image :position= "13" />
+             <button class="buy-button" @click="buyProperty(90000)" v-if="showBuyButtonForCigna">
+      Buy Stock
+    </button>
           </div>
         </div>
         <div class="space community-chest">
@@ -189,6 +234,9 @@
             <img src="../img/dollartree.png" alt="dollar tree" />
             <div class="price">Price $140,000</div>
             <player-image :position= "11" />
+             <button class="buy-button" @click="buyProperty(140000)" v-if="showBuyButtonForDollarTree">
+      Buy Stock
+    </button>
           </div>
         </div>
       </div>
@@ -207,6 +255,9 @@
             <img src="../img/fedex.png" alt="fedex" />
             <div class="price">Price $220,000</div>
             <player-image :position= "21" />
+             <button class="buy-button" @click="buyProperty(220000)" v-if="showBuyButtonForFedex">
+      Buy Stock
+    </button>
           </div>
         </div>
          <div class="space community-chest">
@@ -221,6 +272,9 @@
             <img src="../img/fidelity.jpg" alt="fidelity" />
             <div class="price">Price $122,000</div>
             <player-image :position= "23" />
+             <button class="buy-button" @click="buyProperty(122000)" v-if="showBuyButtonForFidelity">
+      Buy Stock
+    </button>
           </div>
         </div>
         <div class="space property">
@@ -228,6 +282,9 @@
             <img src="../img/garmin.png" alt="garmin" />
             <div class="price">Price $65,000</div>
             <player-image :position= "24" />
+             <button class="buy-button" @click="buyProperty(65000)" v-if="showBuyButtonForGarmin">
+      Buy Stock
+    </button>
           </div>
         </div>
           <div class="space property">
@@ -235,6 +292,9 @@
             <img src="../img/progressive.png" alt="progressive" />
             <div class="price">Price $260,000</div>
             <player-image :position= "25" />
+             <button class="buy-button" @click="buyProperty(260000)" v-if="showBuyButtonForProgressive">
+      Buy Stock
+    </button>
           </div>
         </div>
         <div class="space property">
@@ -244,6 +304,9 @@
             alt="general mills" />
             <div class="price">Price $125,000</div>
             <player-image :position= "26" />
+             <button class="buy-button" @click="buyProperty(125000)" v-if="showBuyButtonForGeneral">
+      Buy Stock
+    </button>
           </div>
         </div>
         <div class="space property">
@@ -251,13 +314,19 @@
             <img class="photo" src="../img/google.png" alt="google" />
             <div class="price">Price $255,000</div>
            <player-image :position= "27" />
+            <button class="buy-button" @click="buyProperty(255000)" v-if="showBuyButtonForGoogle">
+      Buy Stock
+    </button>
           </div>
         </div>
           <div class="space property">
           <div class="container">
             <img src="../img/nike.png" alt="nike" />
             <div class="price">Price $190,000</div>
-            <player-image :position= "26" />
+            <player-image :position= "28" />
+             <button class="buy-button" @click="buyProperty(190000)" v-if="showBuyButtonForNike">
+      Buy Stock
+    </button>
           </div>
         </div>
         <div class="space property">
@@ -266,6 +335,9 @@
              src="../img/heinz.png" alt="heinz" />
             <div class="price">Price $110,000</div>
             <player-image :position= "29" />
+             <button class="buy-button" @click="buyProperty(110000)" v-if="showBuyButtonForHeinz">
+      Buy Stock
+    </button>
           </div>
         </div>
       </div>
@@ -284,6 +356,9 @@
             <img src="../img/hershey.png" alt="hershey" />
             <div class="price">Price $128,000</div>
            <player-image :position= "31" />
+            <button class="buy-button" @click="buyProperty(128000)" v-if="showBuyButtonForHershey">
+      Buy Stock
+    </button>
           </div>
         </div>
         <div class="space property">
@@ -291,6 +366,9 @@
             <img class="photo" src="../img/homedepot.png" alt="home depot" />
             <div class="price">Price $122,000</div>
             <player-image :position= "32" />
+             <button class="buy-button" @click="buyProperty(122000)" v-if="showBuyButtonForHomedepot">
+      Buy Stock
+    </button>
           </div>
         </div>
         <div class="space community-chest">
@@ -305,6 +383,9 @@
             <img src="../img/intel.png" alt="intel" />
             <div class="price">Price $320,000</div>
             <player-image :position= "34" />
+             <button class="buy-button" @click="buyProperty(320000)" v-if="showBuyButtonForIntel">
+      Buy Stock
+    </button>
           </div>
         </div>
         <div class="space property">
@@ -313,6 +394,9 @@
             src="../img/sherwinwilliams.png" alt="sherwinwilliams" />
             <div class="price">Price $125,000</div>
             <player-image :position= "35" />
+             <button class="buy-button" @click="buyProperty(125000)" v-if="showBuyButtonForSherwin">
+      Buy Stock
+    </button>
           </div>
         </div>
         <div class="space property">
@@ -321,6 +405,9 @@
             src="../img/wellsfargo.png" alt="wellsfargo" />
             <div class="price">Price $345,000</div>
             <player-image :position= "36" />
+             <button class="buy-button" @click="buyProperty(345000)" v-if="showBuyButtonForWells">
+      Buy Stock
+    </button>
           </div>
         </div>
         <div class="space property">
@@ -328,6 +415,9 @@
             <img src="../img/johndeere.jpg" alt="john deere" />
             <div class="price">Price $122,000</div>
            <player-image :position= "37" />
+            <button class="buy-button" @click="buyProperty(122000)" v-if="showBuyButtonForJohn">
+      Buy Stock
+    </button>
           </div>
         </div>
         <div class="space fee luxury-tax">
@@ -342,6 +432,9 @@
             <img src="../img/waltdisney.jpg" alt="walt disney" />
             <div class="price">Price $400,000</div>
            <player-image :position= "39" />
+            <button class="buy-button" @click="buyProperty(400000)" v-if="showBuyButtonForDisney">
+      Buy Stock
+    </button>
           </div>
         </div>
       </div>
@@ -365,14 +458,6 @@ export default {
       currentPlayerIndex: 0,
       dice1: 0,
       dice2: 0,
-      // player: {
-      //   img: "Bull",
-      //   //img: this.$store.state.users[0].img,
-      //   position: 0,
-      //   isRolled: false,
-      //   money: 1000000,
-      //   stocksOwned: [],
-      // },
     };
   },
   created() {
@@ -381,6 +466,27 @@ export default {
    
   },
   methods: {
+    
+    buyProperty(price) {
+      // Find the player at the current position
+      const currentPlayer = this.$store.state.players[this.currentPlayerIndex];
+
+      
+      // Add stocks to database when possible
+      if (currentPlayer.money >= price) {
+        // Add a nicer pop-up?
+        const confirmBuy = confirm(`Do you want to buy this stock for $${price}?`);
+        if (confirmBuy) {
+          currentPlayer.money -= price;
+          // currentPlayer.stocksOwned.push("NVIDIA"); // Update this logic with actual property details
+          currentPlayer.stockValue += price;
+          // Update the player's information in the store or database
+          PlayerService.UpdatePlayer(currentPlayer);
+        }
+      } else {
+        alert("You don't have enough money to buy this property.");
+      }
+    },
     rollDice() {
       this.$store.state.players.forEach((player) => {
         if (player.isTurn && !this.isRolled) {
@@ -441,9 +547,23 @@ export default {
     turnCounter(game){
       this.$store.commit("UPDATE_GAME", game)
     },
+    rng(stockValue) {
+  const diceRoll = Math.floor(Math.random() * 6) + 1;
+  const isIncrease = diceRoll <= 3;
+  const changeFactor = Math.random() * 0.1;
+  const stockChange = stockValue * changeFactor;
+  let newStockValue = isIncrease ? stockValue + stockChange : stockValue - stockChange;
+  newStockValue = Math.max(newStockValue, 0);
+
+  // Decimals ffor money value
+  newStockValue = newStockValue.toFixed(2);
+
+  return parseFloat(newStockValue); 
+},
     passTurn(){
       if(this.currentPlayer.isRolled){
         this.currentPlayer.isTurn = false;
+         this.currentPlayer.stockValue = this.rng(this.currentPlayer.stockValue);
         PlayerService.UpdatePlayer(this.currentPlayer)
       if(this.currentPlayerIndex + 1 < this.playerCount){
         this.currentPlayerIndex++;
@@ -474,6 +594,153 @@ export default {
       
   },
   computed: {
+     showBuyButtonForNvidia() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 9); 
+    return currentPlayer && currentPlayer.money >= 130000; 
+     },
+
+    showBuyButtonForApplied() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 8); 
+    return currentPlayer && currentPlayer.money >= 145000; 
+    },
+
+    showBuyButtonForNubo() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 7); 
+    return currentPlayer && currentPlayer.money >= 100000; 
+    },
+
+    showBuyButtonForGamestop() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 6); 
+    return currentPlayer && currentPlayer.money >= 110000; 
+    },
+
+    showBuyButtonForApple() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 5); 
+    return currentPlayer && currentPlayer.money >= 200000; 
+    },
+
+    showBuyButtonForTech() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 3); 
+    return currentPlayer && currentPlayer.money >= 100000; 
+    },
+
+    showBuyButtonForMetro() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 1); 
+    return currentPlayer && currentPlayer.money >= 135000; 
+    },
+
+    showBuyButtonForATT() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 19); 
+    return currentPlayer && currentPlayer.money >= 80000; 
+    },
+
+    showBuyButtonForAA() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 18); 
+    return currentPlayer && currentPlayer.money >= 180000; 
+    },
+
+    showBuyButtonForBoeing() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 16); 
+    return currentPlayer && currentPlayer.money >= 165000; 
+    },
+
+    showBuyButtonForXngage() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 15); 
+    return currentPlayer && currentPlayer.money >= 155000; 
+    },
+
+    showBuyButtonForChipotle() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 14); 
+    return currentPlayer && currentPlayer.money >= 65000; 
+    },
+
+    showBuyButtonForCigna() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 13); 
+    return currentPlayer && currentPlayer.money >= 90000; 
+    },
+
+    showBuyButtonForDollarTree() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 11); 
+    return currentPlayer && currentPlayer.money >= 140000; 
+    },
+
+    showBuyButtonForFedex() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 21); 
+    return currentPlayer && currentPlayer.money >= 220000; 
+    },
+
+
+    showBuyButtonForFidelity() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 23); 
+    return currentPlayer && currentPlayer.money >= 122000; 
+    },
+
+    showBuyButtonForGarmin() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 24); 
+    return currentPlayer && currentPlayer.money >= 65000; 
+    },
+
+    showBuyButtonForProgressive() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 25); 
+    return currentPlayer && currentPlayer.money >= 260000; 
+    },
+
+    showBuyButtonForGeneral() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 26); 
+    return currentPlayer && currentPlayer.money >= 125000; 
+    },
+
+    showBuyButtonForGoogle() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 27); 
+    return currentPlayer && currentPlayer.money >= 255000; 
+    },
+
+    showBuyButtonForNike() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 28); 
+    return currentPlayer && currentPlayer.money >= 190000; 
+    },
+
+    showBuyButtonForHeinz() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 29); 
+    return currentPlayer && currentPlayer.money >= 110000; 
+    },
+
+    showBuyButtonForHershey() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 31); 
+    return currentPlayer && currentPlayer.money >= 128000; 
+    },
+
+    showBuyButtonForHomedepot() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 32); 
+    return currentPlayer && currentPlayer.money >= 122000; 
+    },
+
+    showBuyButtonForIntel() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 34); 
+    return currentPlayer && currentPlayer.money >= 320000; 
+    },
+
+    showBuyButtonForSherwin() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 35); 
+    return currentPlayer && currentPlayer.money >= 125000; 
+    },
+
+    showBuyButtonForWells() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 36); 
+    return currentPlayer && currentPlayer.money >= 345000; 
+    },
+
+    showBuyButtonForJohn() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 37); 
+    return currentPlayer && currentPlayer.money >= 122000; 
+    },
+
+    showBuyButtonForDisney() {
+    const currentPlayer = this.$store.state.players.find(player => player.position === 39); 
+    return currentPlayer && currentPlayer.money >= 400000; 
+    },
+
+
     disabled() {
       //Updating current players roll status based on data object 
       return this.currentPlayer.isRolled;
@@ -865,7 +1132,7 @@ h6 {
 .current-player-header {
   margin: 0;
   font-size: 18px;
-  color: #3498db; /* Text color */
+  color: #3498db;
 }
 
 .player-info {
@@ -920,6 +1187,17 @@ h6 {
 .action-button:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
+}
+.money-value,
+.stock-value{
+  font-size: 14px;
+}
+.money-value {
+  color: green;
+}
+
+.stock-value {
+  color: blue;
 }
 
 </style>

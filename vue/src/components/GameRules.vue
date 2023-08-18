@@ -10,21 +10,22 @@
           Each player starts with $1,000,000 in cash which is used to buy stocks, pay fines or any other purpose requiring cash.
         </li>
         <li>
-          A player's turn starts by rolling two six-sided virtual dice. The player moves squares equal to the sum of the roll.
+          A player's turn starts by rolling two six-sided virtual die. The player moves squares equal to the sum of the roll.
         </li>
         <li>
-          When a player lands on a stock on the game board, they have the option of paying the purchase price to buy it or not. If the player decides not to buy the stock, it remains unsold.
+          When a player lands on a stock on the game board, they have the option of paying the purchase price to buy it or not. Any player may buy that stock when it is there turn.
         </li>
         <li>
-          A stock may be purchased multiple times by the same player or multiple players. The only way a player may acquire stock is to land on it during the course of the game or buy/trade with another player.
+          A stock may be purchased multiple times by the same player or multiple players.
         </li>
         <li>
-          Players may trade or auction stocks with other players to raise cash. If a player attempts to trade or auction a stock and no other player is interested, the player has the option of keeping the stock or selling it back to the bank for 1/2 the purchase price.
+          After each turn, the value of a players held stock changes with the market.
         </li>
         <li>A player is out when they have 0 or negative net worth.</li>
         <li>
-          The game ends when there is only one player left or a specific amount of time has passed which can be set when the game starts.
+          The game ends when there is only one player left or a specific number of turns have passed which can be set when the game starts.
         </li>
+        <p class = "luck">Good Luck, and Have Fun<p/>
       </ol>
     </div>
     <nav class="nav-padding">
@@ -88,5 +89,9 @@ export default {
 .rules-list li {
   margin-bottom: 1rem;
   line-height: 1.5;
+}
+.luck{
+  font-family: cursive;
+  text-align: center;
 }
 </style>

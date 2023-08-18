@@ -21,9 +21,8 @@
       </div>
     </section>
     <p class="description" id="Descdesc">
-      Players take turns rolling dice and moving around the board buying and
-      selling stock, trying to accrue the most amount of money before the game's
-      end. The game ends when the preselected timer hits zero, or all but one
+      Players take turns rolling dice and moving around the board buying stock, trying to accrue the most amount of money before the game's
+      end. The game ends when the preselected turn count hits zero, or all but one
       player lose their money. The winner of the game is the player with the
       most amount of money at the end.
     </p>
