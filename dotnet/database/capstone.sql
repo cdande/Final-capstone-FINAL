@@ -47,12 +47,13 @@ CREATE TABLE games
 CREATE TABLE players 
 (
         player_id INT IDENTITY (1,1) NOT NULL,
-        username VARCHAR(50) NOT NULL,
+        username VARCHAR(100) NOT NULL,
         select_character VARCHAR(10) NOT NULL,
         money INT NOT NULL,
         player_position INT NOT NULL,
         is_rolled BIT NOT NULL,
         is_turn BIT NOT NULL,
+		stock_value INT NOT NULL,
         CONSTRAINT player_id PRIMARY KEY (player_id)
         
 );

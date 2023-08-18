@@ -106,7 +106,8 @@ export default {
         isRolled: false,
         money: 1000000,
         stocksOwned: [],
-        imageSource: ""
+        imageSource: "",
+        stockValue: 0
       },
       players: [
         // The person loggin in should be automagically number one in the lobby without us adding

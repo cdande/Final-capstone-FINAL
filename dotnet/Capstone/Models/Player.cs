@@ -9,5 +9,6 @@
         public int Position { get; set; }
         public bool IsRolled { get; set; }
         public bool IsTurn { get; set; }
+        public  int StockValue { get; set; }
     }
 }

@@ -50,9 +50,9 @@ namespace Capstone.DAO
         {
             List<Player> addedPlayers = new List<Player>();
             Player newPlayer = null;
-            string sql = "INSERT INTO players (username, select_character, money, player_position, is_rolled, is_turn) " +
+            string sql = "INSERT INTO players (username, select_character, money, player_position, is_rolled, is_turn, stock_value) " +
                 "OUTPUT INSERTED.player_id " +
-                "VALUES (@username, @select_character, @money, @player_position, @is_rolled, @is_turn)";
+                "VALUES (@username, @select_character, @money, @player_position, @is_rolled, @is_turn, @stock_value)";
 
             try
             {
@@ -73,6 +73,7 @@ namespace Capstone.DAO
                         cmd.Parameters.AddWithValue("@player_position", player.Position);
                         cmd.Parameters.AddWithValue("@is_rolled", player.IsRolled);
                         cmd.Parameters.AddWithValue("@is_turn", player.IsTurn);
+                        cmd.Parameters.AddWithValue("@stock_value", player.StockValue);
 
 
                         newPlayerId = Convert.ToInt32(cmd.ExecuteScalar());
@@ -127,7 +128,8 @@ namespace Capstone.DAO
                 "money = @money, " +
                 "player_position = @position, " +
                 "is_rolled = @isRolled, " +
-                "is_turn = @isTurn " +
+                "is_turn = @isTurn, " +
+                "stock_value = @stock_value " +
                 "WHERE player_id = @id";
 
             try
@@ -144,7 +146,8 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@isRolled", player.IsRolled);
                     cmd.Parameters.AddWithValue("@isTurn", player.IsTurn);
                     cmd.Parameters.AddWithValue("@id", player.PlayerId);
-                  
+                    cmd.Parameters.AddWithValue("@stock_value", player.StockValue);
+
                     int numberOfRows = cmd.ExecuteNonQuery();
                     if (numberOfRows == 0)
                     {
@@ -171,6 +174,7 @@ namespace Capstone.DAO
             player.Position = Convert.ToInt32(reader["player_position"]);
             player.IsRolled = Convert.ToBoolean(reader["is_rolled"]);
             player.IsTurn = Convert.ToBoolean(reader["is_turn"]);
+            player.StockValue = Convert.ToInt32(reader["stock_value"]);
 
             return player;
         }
